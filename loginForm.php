@@ -284,6 +284,9 @@ if (isset($_POST['submit'])) {
                 <h3>Newsletter</h3>
                 <div class="footersearch">
                     <input type="email" placeholder="Your email id here" />
+
+
+
                     <button>Subscribe</button>
                 </div>
             </div>
