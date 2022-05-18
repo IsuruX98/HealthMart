@@ -173,6 +173,7 @@ if (!isset($_SESSION['user_id'])) {
       flex-direction: column;
     }
   </style>
+  <script src="home.js"></script>
 </head>
 
 <body>

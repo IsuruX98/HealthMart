@@ -172,6 +172,7 @@ if (isset($_POST['submit'])) {
             }
         }
     </style>
+    <script src="home.js"></script>
 </head>
 
 <body>
