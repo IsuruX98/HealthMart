@@ -124,6 +124,7 @@ if (isset($_POST['submit'])) {
     }
   </style>
   <script src="preupload.js"></script>
+  <script src="home.js"></script>
 </head>
 
 <body>

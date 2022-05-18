@@ -121,6 +121,7 @@ if (isset($_POST['submit'])) {
       }
     }
   </style>
+  <script src="home.js"></script>
   <script src="contactus.js"></script>
 </head>
 

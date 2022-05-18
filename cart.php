@@ -184,6 +184,7 @@ if (isset($_POST['submit'])) {
 
     /* store css-End*/
   </style>
+  <script src="home.js"></script>
   <script src="cart.js"></script>
 </head>
 

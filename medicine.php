@@ -150,6 +150,7 @@ if (isset($_POST['code']) && $_POST['code'] != "") {
 
         /* store css-End*/
     </style>
+    <script src="home.js"></script>
 </head>
 
 <body>

@@ -188,6 +188,7 @@ if (isset($_POST['submit'])) {
       }
     }
   </style>
+  <script src="home.js"></script>
   <script src="editacc.js"></script>
 </head>
 
