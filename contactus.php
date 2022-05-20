@@ -1,9 +1,28 @@
+<?php session_start(); ?>
 <?php
 //include database connection
 require_once 'conn.php'; ?>
-
 <?php
-//check if form submitted, insert from form into user table
+$itemList = '';
+$items = '';
+$errors = array();
+//check if there is a search term
+if (isset($_GET['search'])) {
+  $search = mysqli_real_escape_string($conn, $_GET['search']);
+  $query = "SELECT * FROM item WHERE (genericName LIKE '%{$search}%' OR brandName LIKE '%{$search}%') AND isDeleted = 0 ORDER BY genericName";
+
+  $items = mysqli_query($conn, $query);
+  if ($items) {
+    while ($item = mysqli_fetch_assoc($items)) {
+      $itemList .= "<a href=\"searchedItem.php?item_ID={$item['itemID']}\">{$item['genericName']} / {$item['brandName']}</a>";
+    }
+  } else {
+    $errors[] = 'Database query failed.';
+  }
+}
+?>
+<?php
+//check if form submitted,
 if (isset($_POST['submit'])) {
   $name = $_POST['name'];
   $email = $_POST['email'];
@@ -11,7 +30,7 @@ if (isset($_POST['submit'])) {
   $userIdeas = $_POST['userIdeas'];
 
 
-  //insert user data in to table
+  //insert data in to the table
   $sql = "INSERT INTO contactus(uname,email,mobileNo,userIdeas) VALUES('$name','$email','$mobileNo','$userIdeas')";
 
   $result = mysqli_query($conn, $sql);
@@ -31,112 +50,25 @@ if (isset($_POST['submit'])) {
   <link rel="shortcut icon" href="/Images/logo.ico" type="image/x-icon" />
   <link rel="stylesheet" href="/CSS/template2.css" />
   <link rel="stylesheet" href="/CSS/normalize.css" />
+  <link rel="stylesheet" href="/CSS/contactus.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
   <!--stylesheet for icons in footer -->
-  <style>
-    .flex-container-contactus {
-      display: flex;
-      flex-direction: row;
-    }
-
-    .flex-container-contactus-left {
-      flex: 50%;
-      padding: 20px;
-    }
-
-    .flex-container-contactus-right {
-      flex: 50%;
-      margin: auto;
-    }
-
-    .flex-container-contactus-right-up-down {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .flex-container-contactus-right-up {
-      flex: 50%;
-    }
-
-    .flex-container-contactus-right-down {
-      flex: 50%;
-    }
-
-    .flex-container-contactus-right-down img {
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      width: 50%;
-      margin-top: -30px;
-    }
-
-    .contactus-form input[type="text"] {
-      width: 100%;
-      padding: 15px;
-      margin: 5px 0 22px 0;
-      display: inline-block;
-      border: none;
-      background: #f1f1f1;
-    }
-
-    .getintouch {
-      margin: auto;
-      width: 70%;
-      margin-right: -50px;
-      margin-top: 70px;
-    }
-
-    .contactus-form {
-      padding: 30px;
-    }
-
-    .contactus-form button {
-      background-color: #25262e;
-      color: white;
-      padding: 14px 20px;
-      margin: 20px 0;
-      border: none;
-      cursor: pointer;
-      width: 100%;
-    }
-
-    .contactus-form button:hover {
-      background-color: #2196f3;
-      color: black;
-      transition: 0.3s;
-    }
-
-    .contactus-form textarea {
-      width: 100%;
-    }
-
-    @media screen and (max-width: 800px) {
-      .flex-container-contactus {
-        flex-direction: column;
-      }
-
-      .getintouch {
-        margin: auto;
-        text-align: center;
-      }
-    }
-  </style>
-  <script src="home.js"></script>
-  <script src="contactus.js"></script>
+  <script src="/JS/home.js"></script>
+  <script src="/JS/contactus.js"></script>
 </head>
 
 <body>
   <div class="header">
     <a href="#" onclick="home();" class="logo"><i class="far fa-eye"></i> HealthMart</a>
     <div class="header-right">
-      <div><?php
-            if (isset($_SESSION['user_id'])) {
-              echo "<a onclick=\"myacc();\"><i class=\"far fa-user-circle\"> </i>&nbsp;&nbsp;&nbsp;";
-              echo $_SESSION['name'] . "</a>";
-            } else {
-              echo "<a onclick=\"register();\"><i class=\"far fa-user-circle\"></i> Sign in</a>";
-            }
-            ?></div>
+      <?php
+      if (isset($_SESSION['user_id'])) {
+        echo "<a onclick=\"myacc();\"><i class=\"far fa-user-circle\"> </i>&nbsp;&nbsp;&nbsp;";
+        echo $_SESSION['name'] . "</a>";
+      } else {
+        echo "<a onclick=\"register();\"><i class=\"far fa-user-circle\"></i> Sign in</a>";
+      }
+      ?>
       <?php
       if (!empty($_SESSION["shopping_cart"])) {
         $cart_count = count(array_keys($_SESSION["shopping_cart"]));
@@ -145,20 +77,28 @@ if (isset($_POST['submit'])) {
       <?php
       }
       ?>
-
     </div>
   </div>
   <div class="menu">
-    <a class="active" href="#" onclick="home();"><i class="fa fa-fw fa-home"></i> Home</a>
-    <a href="#" onclick="medicine();">Medicines</a>
-    <a href="#" onclick="medicalDevices();">Medical Devices</a>
-    <a href="#" onclick="traditionalRemedies();">Traditional Remedies</a>
-    <a href="#" onclick="aboutUs();">About us</a>
+    <div class="menu-links">
+      <a class="active" href="#" onclick="home();"><i class="fa fa-fw fa-home"></i> Home</a>
+      <a href="#" onclick="medicine();">Medicines</a>
+      <a href="#" onclick="medicalDevices();">Medical Devices</a>
+      <a href="#" onclick="traditionalRemedies();">Traditional Remedies</a>
+      <a href="#" onclick="aboutUs();">About us</a>
+    </div>
     <div class="search-container">
-      <form action="/action_page.php">
+      <form action="contactus.php" method="GET">
         <input type="text" placeholder="Search.." name="search" />
         <button type="submit">Submit</button>
       </form>
+      <div class="dropdown-content" id="drop">
+        <?php
+        if ($items) {
+          echo $itemList;
+        }
+        ?>
+      </div>
     </div>
   </div>
   <div class="flex-container-contactus">

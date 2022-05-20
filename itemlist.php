@@ -18,8 +18,6 @@ if (isset($_GET['search'])) {
   $query = "SELECT * FROM item WHERE isDeleted = 0 ORDER BY genericName";
 }
 
-//getting the list of items
-// $query = "SELECT * FROM item WHERE isDeleted = 0 ORDER BY genericName";
 $items = mysqli_query($conn, $query);
 
 if ($items) {
@@ -28,6 +26,7 @@ if ($items) {
     $itemList .= "<td>{$item['genericName']}</td>";
     $itemList .= "<td>{$item['brandName']}</td>";
     $itemList .= "<td>{$item['itemPrice']}</td>";
+    $itemList .= "<td>{$item['type']}</td>";
     $itemList .= "<td><button class=\"itemListEditBtn\"><a href=\"modifyItem.php?item_ID={$item['itemID']}\">Edit</a></button></td>";
     $itemList .= "<td><button class=\"itemListDltBtn\"><a href=\"deleteItem.php?item_ID={$item['itemID']}\" onclick=\"return confirm('Are you sure you want to delete this item ?');\">Delete</a></button></td>";
     $itemList .= "</tr>";
@@ -48,92 +47,10 @@ if ($items) {
   <link rel="shortcut icon" href="/Images/logo.ico" type="image/x-icon" />
   <link rel="stylesheet" href="/CSS/template2.css" />
   <link rel="stylesheet" href="/CSS/normalize.css" />
+  <link rel="stylesheet" href="/CSS/itemlist.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
   <!--stylesheet for icons in footer -->
-  <style>
-    .itemList-main {
-      margin: auto;
-      padding: 20px;
-    }
-
-    .itemList-main h1 {
-      margin-bottom: 20px;
-    }
-
-    .itemList {
-      width: 100%;
-    }
-
-    .itemList tr:nth-child(even) {
-      background-color: #f2f2f2;
-    }
-
-    .itemList tr:hover {
-      background-color: #ddd;
-    }
-
-    .itemList th {
-      padding-top: 12px;
-      padding-bottom: 12px;
-      text-align: left;
-      background-color: #212121;
-      color: white;
-    }
-
-    .itemList th,
-    .itemList td {
-      padding: 10px;
-      border-bottom: 1px solid #aaa;
-    }
-
-    #searchbox {
-      width: 100%;
-      padding: 10px;
-    }
-
-    .itemListDltBtn {
-      padding: 2px 4px;
-      background-color: #f44336;
-      border: none;
-      cursor: pointer;
-      color: white;
-    }
-
-    .itemListDltBtn a:visited {
-      color: white;
-    }
-
-    .itemListDltBtn a {
-      text-decoration: none;
-    }
-
-    .itemListEditBtn {
-      padding: 2px 4px;
-      background-color: dodgerblue;
-      border: none;
-      cursor: pointer;
-      color: white;
-    }
-
-    .itemListDltBtn:hover {
-      background-color: #212121;
-      transition: 0.3s;
-    }
-
-    .itemListEditBtn:hover {
-      background-color: #212121;
-      transition: 0.3s;
-    }
-
-    .itemListEditBtn a:visited {
-      color: white;
-    }
-
-    .itemListEditBtn a {
-      text-decoration: none;
-    }
-  </style>
-  <script src="admindashboard.js"></script>
+  <script src="/JS/admindashboard.js"></script>
 </head>
 
 <body>
@@ -144,12 +61,14 @@ if ($items) {
     </div>
   </div>
   <div class="menu">
-    <a class="active" onclick="adminDashBoard();"><i class="fa fa-fw fa-home"></i> Home</a>
-    <a href="#" onclick="addnewItem();">Add New Items</a>
-    <a href="#" onclick="viewItems();">View Items, Update & Delete</a>
-    <a href="#" onclick="viewContactUs();">View Contact Us</a>
-    <a href="#" onclick="viewPreupOrders();">View Prescription Orders</a>
-    <a href="#" onclick="viewCartOrders();">View Cart Orders</a>
+    <div class="menu-links">
+      <a class="active" onclick="adminDashBoard();"><i class="fa fa-fw fa-home"></i> Home</a>
+      <a href="#" onclick="addnewItem();">Add New Items</a>
+      <a href="#" onclick="viewItems();">View Items, Update & Delete</a>
+      <a href="#" onclick="viewContactUs();">View Contact Us</a>
+      <a href="#" onclick="viewPreupOrders();">View Prescription Orders</a>
+      <a href="#" onclick="viewCartOrders();">View Cart Orders</a>
+    </div>
     <div class="search-container">
 
     </div>
@@ -168,6 +87,7 @@ if ($items) {
         <th>Generic Name</th>
         <th>Brand Name</th>
         <th>Price Rs.</th>
+        <th>Type</th>
         <th>Edit</th>
         <th>Delete</th>
       </tr>

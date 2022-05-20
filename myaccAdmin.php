@@ -7,36 +7,6 @@ require_once 'conn.php'; ?>
 if (!isset($_SESSION['user_id'])) {
     header('location: loginForm.php');
 }
-$viewPreupOrders = '';
-
-//getting the list of uploaded prescriptions
-$query = "SELECT * FROM pupload ORDER BY PID DESC";
-$pUploads = mysqli_query($conn, $query);
-
-if ($pUploads) {
-    while ($pUpload = mysqli_fetch_assoc($pUploads)) {
-        $viewPreupOrders .= "<tr>";
-        $viewPreupOrders .= "<td>{$pUpload['PID']}</td>";
-        $viewPreupOrders .= "<td>{$pUpload['uname']}</td>";
-        $viewPreupOrders .= "<td>{$pUpload['email']}</td>";
-        $viewPreupOrders .= "<td>{$pUpload['mobileNo']}</td>";
-        $viewPreupOrders .= "<td>{$pUpload['address1']}</td>";
-        $viewPreupOrders .= "<td>{$pUpload['frequency']}</td>";
-        $viewPreupOrders .= "<td>{$pUpload['fullfillment']}</td>";
-        $viewPreupOrders .= "<td>{$pUpload['substitutes']}</td>";
-        $viewPreupOrders .= "<td>{$pUpload['days']}</td>";
-        $viewPreupOrders .= "<td>{$pUpload['payment']}</td>";
-        $viewPreupOrders .= "<td>{$pUpload['refund']}</td>";
-        $viewPreupOrders .= "<td>{$pUpload['prescriptionTxt']}</td>";
-        $viewPreupOrders .= "<td>{$pUpload['prescriptionFile']}</td>";
-        $viewPreupOrders .= "<td>{$pUpload['newAddress']}</td>";
-        $viewPreupOrders .= "<td>{$pUpload['Ordered-date-and-Time']}</td>";
-        $viewPreupOrders .= "</tr>";
-    }
-} else {
-    echo "Database query failed.";
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -49,17 +19,24 @@ if ($pUploads) {
     <link rel="shortcut icon" href="/Images/logo.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/CSS/template2.css" />
     <link rel="stylesheet" href="/CSS/normalize.css" />
-    <link rel="stylesheet" href="/CSS/viewpreuporders.css" />
+    <link rel="stylesheet" href="/CSS/myaccAdmin.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
     <!--stylesheet for icons in footer -->
+    <script src="/JS/home.js"></script>
     <script src="/JS/admindashboard.js"></script>
+    <script src="/JS/cancel.js"></script>
 </head>
 
 <body>
     <div class="header">
         <a href="#default" class="logo"><i class="far fa-eye"></i> HealthMart</a>
         <div class="header-right">
-            <a href="#" onclick="adminDashBoard();"><i class="far fa-user-circle"> </i>&nbsp;&nbsp;&nbsp;<?php echo $_SESSION['name']; ?></a>
+            <?php
+            if (isset($_SESSION['user_id'])) {
+                echo "<a onclick=\"myaccAdmin();\"><i class=\"far fa-user-circle\"> </i>&nbsp;&nbsp;&nbsp;";
+                echo $_SESSION['name'] . "</a>";
+            }
+            ?>
         </div>
     </div>
     <div class="menu">
@@ -75,32 +52,44 @@ if ($pUploads) {
 
         </div>
     </div>
-    <main class="viewPreupOrders-main">
-        <h2>Uploaded Prescriptions list</h2>
-        <br />
-        <div class="viewPreupOrders-table">
-            <table class="viewPreupOrders">
-                <tr>
-                    <th>Prescription ID</th>
-                    <th>Name</th>
-                    <th>E-mail</th>
-                    <th>Mobile No</th>
-                    <th>Address</th>
-                    <th>Frequency</th>
-                    <th>Fulfillment</th>
-                    <th>Substitutes</th>
-                    <th>Days</th>
-                    <th>Payment</th>
-                    <th>Refund</th>
-                    <th>Prescription in Text</th>
-                    <th>Prescription File Name</th>
-                    <th>New Address</th>
-                    <th>Added date and time</th>
-                </tr>
-                <?php echo $viewPreupOrders; ?>
-            </table>
+    <!--Admin Account-->
+    <div class="ymyacc">
+        <div class="ymyaccleft">
+            <h1>My Profile</h1>
+
+            <h4>Account Information</h4>
+
+            <hr />
+
+            <h4>Contact Information</h4>
+
+            <p>Name : <?php echo $_SESSION['name']; ?></p>
+            <p>E-mail : <?php echo $_SESSION['email']; ?></p>
+            <p>Mobile Number: 0<?php echo $_SESSION['mobileNo']; ?></p>
+
+            <br />
+
+            <h4>Address Book</h4>
+
+            <hr />
+
+            <p>Address</p>
+
+            <p>
+                <?php echo $_SESSION['address']; ?>
+            </p>
+            <br />
+
+            <div class="myacc-btnbox">
+                <button class="myacc-editbtn"><?php echo "<a href=\"editAdminAcc.php?user_ID={$_SESSION['user_id']}\">Edit Account Infomation</a> "; ?></button>
+                <button type="submit" name="changepw" class="myacc-changepwbtn"><?php echo "<a href=\"changepwAdmin.php?user_ID={$_SESSION['user_id']}\">Change Password</a> "; ?></button>
+                <button class="myacc-logoutbtn" onclick="return confirm('Are you sure you want to Log Out ?');"><a href="logout.php">Log Out</a></button>
+            </div>
         </div>
-    </main>
+        <div class="ymyaccright">
+            <img src="/Images/myacc.jpg" alt="" />
+        </div>
+    </div>
     <footer>
         <div class="row primary">
             <div class="column about">
@@ -129,6 +118,11 @@ if ($pUploads) {
             <p>© 2022 HealthMart,inc. All rights reserved.</p>
         </div>
     </footer>
+
 </body>
 
 </html>
+<?php
+//close connection to database
+mysqli_close($conn);
+?>

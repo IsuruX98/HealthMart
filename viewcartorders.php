@@ -9,22 +9,23 @@ if (!isset($_SESSION['user_id'])) {
 }
 $viewCartOrders = '';
 
-//getting the list of uploaded prescriptions
+//getting the list of Cart orders
 $query = "SELECT * FROM cart ORDER BY CID DESC";
 $CartOrders = mysqli_query($conn, $query);
 
 if ($CartOrders) {
     while ($CartOrder = mysqli_fetch_assoc($CartOrders)) {
-        $$viewCartOrders .= "<tr>";
-        $$viewCartOrders .= "<td>{$CartOrder['CID']}</td>";
-        $$viewCartOrders .= "<td>{$CartOrder['uname']}</td>";
-        $$viewCartOrders .= "<td>{$CartOrder['email']}</td>";
-        $$viewCartOrders .= "<td>{$CartOrder['mobileNo']}</td>";
-        $$viewCartOrders .= "<td>{$CartOrder['address1']}</td>";
-        $$viewCartOrders .= "<td>{$CartOrder['payment']}</td>";
-        $$viewCartOrders .= "<td>{$CartOrder['newAddress']}</td>";
-        $$viewCartOrders .= "<td>{$CartOrder['itemsAndQuantity']}</td>";
-        $viewPreupOrders .= "</tr>";
+        $viewCartOrders .= "<tr>";
+        $viewCartOrders .= "<td>{$CartOrder['CID']}</td>";
+        $viewCartOrders .= "<td>{$CartOrder['uname']}</td>";
+        $viewCartOrders .= "<td>{$CartOrder['email']}</td>";
+        $viewCartOrders .= "<td>{$CartOrder['mobileNo']}</td>";
+        $viewCartOrders .= "<td>{$CartOrder['address1']}</td>";
+        $viewCartOrders .= "<td>{$CartOrder['payment']}</td>";
+        $viewCartOrders .= "<td>{$CartOrder['newAddress']}</td>";
+        $viewCartOrders .= "<td>{$CartOrder['itemsAndQuantity']}</td>";
+        $viewCartOrders .= "<td>{$CartOrder['Ordered-date-and-Time']}</td>";
+        $viewCartOrders .= "</tr>";
     }
 } else {
     echo "Database query failed.";
@@ -42,45 +43,10 @@ if ($CartOrders) {
     <link rel="shortcut icon" href="/Images/logo.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/CSS/template2.css" />
     <link rel="stylesheet" href="/CSS/normalize.css" />
+    <link rel="stylesheet" href="/CSS/viewcartorders.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
     <!--stylesheet for icons in footer -->
-    <style>
-        .viewCartOrders-main {
-            margin: auto;
-            padding: 20px;
-        }
-
-        .viewCartOrders-main h1 {
-            margin-bottom: 20px;
-        }
-
-        .viewCartOrders {
-            width: 100%;
-        }
-
-        .viewCartOrders tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-
-        .viewCartOrders tr:hover {
-            background-color: #ddd;
-        }
-
-        .viewCartOrders th {
-            padding-top: 12px;
-            padding-bottom: 12px;
-            text-align: left;
-            background-color: #212121;
-            color: white;
-        }
-
-        .viewCartOrders th,
-        .viewCartOrders td {
-            padding: 10px;
-            border-bottom: 1px solid #aaa;
-        }
-    </style>
-    <script src="admindashboard.js"></script>
+    <script src="/JS/admindashboard.js"></script>
 </head>
 
 <body>
@@ -91,18 +57,21 @@ if ($CartOrders) {
         </div>
     </div>
     <div class="menu">
-        <a class="active" onclick="adminDashBoard();"><i class="fa fa-fw fa-home"></i> Home</a>
-        <a href="#" onclick="addnewItem();">Add New Items</a>
-        <a href="#" onclick="viewItems();">View Items, Update & Delete</a>
-        <a href="#" onclick="viewContactUs();">View Contact Us</a>
-        <a href="#" onclick="viewPreupOrders();">View Prescription Orders</a>
-        <a href="#" onclick="viewCartOrders();">View Cart Orders</a>
+        <div class="menu-links">
+            <a class="active" onclick="adminDashBoard();"><i class="fa fa-fw fa-home"></i> Home</a>
+            <a href="#" onclick="addnewItem();">Add New Items</a>
+            <a href="#" onclick="viewItems();">View Items, Update & Delete</a>
+            <a href="#" onclick="viewContactUs();">View Contact Us</a>
+            <a href="#" onclick="viewPreupOrders();">View Prescription Orders</a>
+            <a href="#" onclick="viewCartOrders();">View Cart Orders</a>
+        </div>
         <div class="search-container">
 
         </div>
     </div>
     <main class="viewCartOrders-main">
         <h2>Cart Order list</h2>
+        <br />
         <table class="viewCartOrders">
             <tr>
                 <th>Cart Order ID</th>
@@ -113,6 +82,8 @@ if ($CartOrders) {
                 <th>Payment</th>
                 <th>New Address</th>
                 <th>Items and Quantity</th>
+                <th>Added date and time</th>
+
             </tr>
             <?php echo $viewCartOrders; ?>
         </table>

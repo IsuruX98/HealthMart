@@ -1,8 +1,7 @@
-<?php
-//include database connection
-require_once 'conn.php'; ?>
 <?php session_start(); ?>
 <?php
+//include database connection
+require_once 'conn.php';
 $itemList = '';
 $items = '';
 $errors = array();
@@ -21,46 +20,6 @@ if (isset($_GET['search'])) {
     }
 }
 ?>
-<?php
-
-$status = "";
-
-if (isset($_POST['code']) && $_POST['code'] != "") {
-
-    $code = $_POST['code'];
-    $result = mysqli_query($conn, "SELECT * FROM `item` WHERE `code`='$code'");
-    $row = mysqli_fetch_assoc($result);
-    $genericName = $row['genericName'];
-    $brandName = $row['brandName'];
-    $code = $row['code'];
-    $itemPrice = $row['itemPrice'];
-    $itemImage = $row['itemImage'];
-
-    $cartArray = array(
-        $code => array(
-            'genericName' => $genericName,
-            'brandName' => $brandName,
-            'code' => $code,
-            'itemPrice' => $itemPrice,
-            'quantity' => 1,
-            'itemImage' => $itemImage,
-        ),
-    );
-    if (empty($_SESSION["shopping_cart"])) {
-        $_SESSION["shopping_cart"] = $cartArray;
-        $status = "Product is added to your cart!";
-    } else {
-        $array_keys = array_keys($_SESSION["shopping_cart"]);
-        if (in_array($code, $array_keys)) {
-            $status = "<p class=\"red\">Product is already added to your cart!<p>";
-        } else {
-            $_SESSION["shopping_cart"] = array_merge($_SESSION["shopping_cart"], $cartArray);
-            $status = "Product is added to your cart!";
-        }
-    }
-}
-
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -72,8 +31,8 @@ if (isset($_POST['code']) && $_POST['code'] != "") {
     <title>healthmart.com</title>
     <link rel="shortcut icon" href="/Images/logo.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/CSS/template2.css" />
+    <link rel="stylesheet" href="/CSS/aboutUs.css" />
     <link rel="stylesheet" href="/CSS/normalize.css" />
-    <link rel="stylesheet" href="/CSS/store.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
     <!--stylesheet for icons in footer -->
     <script src="/JS/home.js"></script>
@@ -110,7 +69,7 @@ if (isset($_POST['code']) && $_POST['code'] != "") {
             <a href="#" onclick="aboutUs();">About us</a>
         </div>
         <div class="search-container">
-            <form action="medicalDevices.php" method="GET">
+            <form action="aboutUs.php" method="GET">
                 <input type="text" placeholder="Search.." name="search" />
                 <button type="submit">Submit</button>
             </form>
@@ -123,34 +82,52 @@ if (isset($_POST['code']) && $_POST['code'] != "") {
             </div>
         </div>
     </div>
-    <br>
-    <h2>
-        <t>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;Medical Devices
-    </h2>
-    <div class="status" id="status1">
-        <?php echo $status; ?>
-    </div>
-    <section id="product1" class="section-p1">
-        <div class="pro-container">
-
-            <?php
-            $result = mysqli_query($conn, "SELECT * FROM `item` WHERE `type` = 'medical devices'");
-            while ($row = mysqli_fetch_assoc($result)) {
-                echo "<div class='pro'>
-                  <form method='post' action=''>
-                  <input type='hidden' name='code' value=" . $row['code'] . " />
-                  <img src='itemImg/" . $row['itemImage'] . "' />
-                  <div class='des'>
-                  <span>" . $row['genericName'] . "</span>
-                  <h5>" . $row['brandName'] . "</h5>
-                  <h4>Rs. " . $row['itemPrice'] . "</h4>
-                  <button type='submit' class='button'>Add to Cart</button>
-                  </div>
-                  </form>
-                     </div>";
-            }
-            ?>
+    <!-- aboutus -->
+    <section id="aboutusi" class="section-1">
+        <div class="aboutusimg">
+            <img src="/Images/Aboutus.png" alt="">
         </div>
+        <div class="details">
+            <h1>About HealthMart</h1>
+            <p>
+                HealthMart is an online publisher of healthcare media. Through its
+                powerful, user-friendly, interactive website, we provide consumers
+                with easy-to-read, in-depth, authoritative medical information.
+                <br /><br />
+                The organization, headed by a team of professionals, has introduced an
+                innovative retail concept centered on exceptional shopper experience
+                through service, technology, product offering, pricing and a host of
+                value additions. Through this innovative concept HealthMart has gained
+                market leadership position in Drug Store Retailing with a loyal
+                consumer base. <br /><br />
+                We launched our online pharmacy service to accommodate consumers' busy
+                schedules and traffic problems. Customers can use our "HealthMart
+                pharmacy online" service to upload medical prescriptions or order
+                medical equipment and medications from our "Pharmacy Online service."
+                Your order will be delivered to your door by HealthMart's experienced
+                and licensed dispenser. Our staff has received training in medical
+                product or prescription advice, as well as medical equipment
+                demonstration and installation.HealthMart’s core tenet has been to be
+                the standard in healthcare retailing. Centered on this belief, our
+                business model strives to be more just than an ordinary pharmacy in
+                our offerings, format and solutions. Our view of Healthcare Retailing
+                is not limited to the narrow focus of pharmaceuticals. To us
+                Healthcare Retailing is also about Living Better and Looking Better.
+            </p>
+
+            <h2>Our Vision</h2>
+            <p>To be Sri Lanka's most admired healthcare retailer.</p>
+
+            <h2>Our Mission</h2>
+            <p>
+                To provide the Customer and the Community with superior Pharma,
+                Wellness, and Beauty solutions.
+            </p>
+            <br />
+            <div>
+                <button class="register" onclick="register();">Register to our website</button>
+            </div>
+            <br />
     </section>
     <footer>
         <div class="row primary">
@@ -196,17 +173,6 @@ if (isset($_POST['code']) && $_POST['code'] != "") {
             <p>© 2022 HealthMart,inc. All rights reserved.</p>
         </div>
     </footer>
-
-
-
-
-
-
-
 </body>
 
 </html>
-<?php
-//close connection to database
-mysqli_close($conn);
-?>

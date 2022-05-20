@@ -1,0 +1,150 @@
+.ymyacc {
+  padding: 3%;
+  margin-left: 5%;
+  margin-right: 5%;
+  display: flex;
+  flex-direction: row;
+}
+
+.ymyaccleft {
+  padding: 20px;
+  flex: 50%;
+}
+
+.ymyaccright {
+  flex: 50%;
+  display: flex;
+  justify-content: center;
+}
+
+.ymyaccright img {
+  width: 100%;
+  margin: auto;
+}
+
+.y-edit {
+  background-color: #25262e;
+  color: white;
+  padding: 0px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 70px;
+  height: 30px;
+  font-size: small;
+  text-align: center;
+}
+
+.y-edit:hover {
+  background-color: #2196f3;
+  color: black;
+  transition: 0.3s;
+}
+
+.y-changepw {
+  background-color: #25262e;
+  color: white;
+  padding: 0px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 140px;
+  height: 30px;
+  font-size: small;
+  text-align: center;
+}
+
+.y-changepw:hover {
+  background-color: #2196f3;
+  color: black;
+  transition: 0.3s;
+}
+
+.myacc-logoutbtn {
+  background-color: #f44336;
+  border: none;
+  padding: 0px;
+  margin: 8px 0;
+  color: white;
+  cursor: pointer;
+  width: 70px;
+  height: 30px;
+  font-size: small;
+  text-align: center;
+}
+
+.myacc-logoutbtn:hover {
+  background-color: #ce1f13;
+  color: white;
+  transition: 0.3s;
+}
+
+.myacc-logoutbtn a {
+  text-decoration: none;
+  color: white;
+}
+
+.myacc-logoutbtn a:visited {
+  color: white;
+}
+
+.myacc-editbtn {
+  background-color: #f44336;
+  border: none;
+  padding: 0px;
+  margin: 8px 0;
+  color: white;
+  cursor: pointer;
+  width: 150px;
+  height: 30px;
+  font-size: small;
+  text-align: center;
+}
+
+.myacc-editbtn:hover {
+  background-color: #ce1f13;
+  color: white;
+  transition: 0.3s;
+}
+
+.myacc-editbtn a {
+  text-decoration: none;
+  color: white;
+}
+
+.myacc-editbtn a:visited {
+  color: white;
+}
+
+.myacc-changepwbtn {
+  background-color: #f44336;
+  border: none;
+  padding: 0px;
+  margin: 8px 0;
+  color: white;
+  cursor: pointer;
+  width: 120px;
+  height: 30px;
+  font-size: small;
+  text-align: center;
+}
+
+.myacc-changepwbtn:hover {
+  background-color: #ce1f13;
+  color: white;
+  transition: 0.3s;
+}
+
+.myacc-changepwbtn a {
+  text-decoration: none;
+  color: white;
+}
+
+.myacc-changepwbtn a:visited {
+  color: white;
+}
+
+.myacc-btnbox {
+  display: flex;
+  flex-direction: column;
+}

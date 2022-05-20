@@ -3,6 +3,25 @@
 //include database connection
 require_once 'conn.php'; ?>
 <?php
+$itemList = '';
+$items = '';
+$errors = array();
+//check if there is a search term
+if (isset($_GET['search'])) {
+    $search = mysqli_real_escape_string($conn, $_GET['search']);
+    $query = "SELECT * FROM item WHERE (genericName LIKE '%{$search}%' OR brandName LIKE '%{$search}%') AND isDeleted = 0 ORDER BY genericName";
+
+    $items = mysqli_query($conn, $query);
+    if ($items) {
+        while ($item = mysqli_fetch_assoc($items)) {
+            $itemList .= "<a href=\"searchedItem.php?item_ID={$item['itemID']}\">{$item['genericName']} / {$item['brandName']}</a>";
+        }
+    } else {
+        $errors[] = 'Database query failed.';
+    }
+}
+?>
+<?php
 //check for form submission
 if (isset($_POST['submit'])) {
 
@@ -70,127 +89,25 @@ if (isset($_POST['submit'])) {
     <link rel="shortcut icon" href="/Images/logo.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/CSS/template2.css" />
     <link rel="stylesheet" href="/CSS/normalize.css" />
+    <link rel="stylesheet" href="/CSS/loginForm.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
     <!--stylesheet for icons in footer -->
-    <style>
-        .LoginPage {
-            padding: 50px;
-        }
-
-        .LoginPage hr {
-            border: 1px solid #f1f1f1;
-            margin-bottom: 25px;
-        }
-
-        .LoginPage form {
-            border: 3px solid #f1f1f1;
-            padding: 25px;
-        }
-
-        .LoginPage input[type="text"],
-        .LoginPage input[type="password"] {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-        }
-
-        .login-container button {
-            background-color: #25262e;
-            color: white;
-            padding: 14px 20px;
-            margin: 8px 0;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        .login-container button:hover {
-            background-color: #2196f3;
-            color: black;
-            transition: 0.3s;
-        }
-
-        .pw-container .cancelbtn {
-            width: 100%;
-            padding: 10px 18px;
-            background-color: #f44336;
-            margin: 8px 0;
-            border: none;
-            cursor: pointer;
-            color: white;
-        }
-
-        .pw-container button:hover {
-            color: black;
-            transition: 0.3s;
-        }
-
-        .login-container span.psw {
-            float: right;
-            padding-top: 10px;
-            padding-bottom: 10px;
-        }
-
-        .mother-left-right {
-            display: flex;
-            flex-direction: row;
-        }
-
-        .child-left {
-            flex: 80%;
-            padding: 20px;
-        }
-
-        .child-right {
-            flex: 50%;
-            padding: 20px;
-        }
-
-        .child-right img {
-            width: 100%;
-            padding: 20px;
-            margin-top: 5%;
-        }
-
-        .not-member {
-            float: right;
-            padding: 10px;
-            font-weight: bolder;
-        }
-
-        .not-member a {
-            text-decoration: none;
-        }
-
-        @media screen and (max-width: 800px) {
-            .mother-left-right {
-                flex-direction: column;
-            }
-
-            .child-right img {
-                width: 100%;
-                margin: auto;
-            }
-        }
-    </style>
-    <script src="home.js"></script>
+    <script src="/JS/home.js"></script>
+    <script src="/JS/cancel.js"></script>
 </head>
 
 <body>
     <div class="header">
         <a href="#" onclick="home();" class="logo"><i class="far fa-eye"></i> HealthMart</a>
         <div class="header-right">
-            <div><?php
-                    if (isset($_SESSION['user_id'])) {
-                        echo "<a onclick=\"myacc();\"><i class=\"far fa-user-circle\"> </i>&nbsp;&nbsp;&nbsp;";
-                        echo $_SESSION['name'] . "</a>";
-                    } else {
-                        echo "<a onclick=\"register();\"><i class=\"far fa-user-circle\"></i> Sign in</a>";
-                    }
-                    ?></div>
+            <?php
+            if (isset($_SESSION['user_id'])) {
+                echo "<a onclick=\"myacc();\"><i class=\"far fa-user-circle\"> </i>&nbsp;&nbsp;&nbsp;";
+                echo $_SESSION['name'] . "</a>";
+            } else {
+                echo "<a onclick=\"register();\"><i class=\"far fa-user-circle\"></i> Sign in</a>";
+            }
+            ?>
             <?php
             if (!empty($_SESSION["shopping_cart"])) {
                 $cart_count = count(array_keys($_SESSION["shopping_cart"]));
@@ -199,20 +116,28 @@ if (isset($_POST['submit'])) {
             <?php
             }
             ?>
-
         </div>
     </div>
     <div class="menu">
-        <a class="active" href="#" onclick="home();"><i class="fa fa-fw fa-home"></i> Home</a>
-        <a href="#" onclick="medicine();">Medicines</a>
-        <a href="#" onclick="medicalDevices();">Medical Devices</a>
-        <a href="#" onclick="traditionalRemedies();">Traditional Remedies</a>
-        <a href="#" onclick="aboutUs();">About us</a>
+        <div class="menu-links">
+            <a class="active" href="#" onclick="home();"><i class="fa fa-fw fa-home"></i> Home</a>
+            <a href="#" onclick="medicine();">Medicines</a>
+            <a href="#" onclick="medicalDevices();">Medical Devices</a>
+            <a href="#" onclick="traditionalRemedies();">Traditional Remedies</a>
+            <a href="#" onclick="aboutUs();">About us</a>
+        </div>
         <div class="search-container">
-            <form action="/action_page.php">
+            <form action="loginForm.php" method="GET">
                 <input type="text" placeholder="Search.." name="search" />
                 <button type="submit">Submit</button>
             </form>
+            <div class="dropdown-content" id="drop">
+                <?php
+                if ($items) {
+                    echo $itemList;
+                }
+                ?>
+            </div>
         </div>
     </div>
 
@@ -235,12 +160,12 @@ if (isset($_POST['submit'])) {
                         <label for="psw"><b>Password</b></label>
                         <input type="password" placeholder="Enter Password" name="psw" required />
 
-                        <div class="not-member"><a href="#">Not a member : register here</a></div>
+                        <div class="not-member"><a href="#" onclick="notAmember();">Not a member : register here</a></div>
                         <button type="submit" name="submit">Login</button>
                     </div>
 
                     <div class="pw-container">
-                        <button type="button" class="cancelbtn">Cancel</button>
+                        <button type="button" class="cancelbtn" onclick="cancelLogin();">Cancel</button>
                     </div>
                 </form>
             </div>
@@ -293,10 +218,6 @@ if (isset($_POST['submit'])) {
             <p>© 2022 HealthMart,inc. All rights reserved.</p>
         </div>
     </footer>
-
-
-
-
 
 </body>
 

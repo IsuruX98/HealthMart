@@ -1,0 +1,102 @@
+.LoginPage {
+  padding: 50px;
+}
+
+.LoginPage hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+.LoginPage form {
+  border: 3px solid #f1f1f1;
+  padding: 25px;
+}
+
+.LoginPage input[type="text"],
+.LoginPage input[type="password"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.login-container button {
+  background-color: #25262e;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.login-container button:hover {
+  background-color: #2196f3;
+  color: black;
+  transition: 0.3s;
+}
+
+.pw-container .cancelbtn {
+  width: 100%;
+  padding: 10px 18px;
+  background-color: #f44336;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+
+.pw-container button:hover {
+  color: black;
+  transition: 0.3s;
+}
+
+.login-container span.psw {
+  float: right;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.mother-left-right {
+  display: flex;
+  flex-direction: row;
+}
+
+.child-left {
+  flex: 80%;
+  padding: 20px;
+}
+
+.child-right {
+  flex: 50%;
+  padding: 20px;
+}
+
+.child-right img {
+  width: 100%;
+  padding: 20px;
+  margin-top: 5%;
+}
+
+.not-member {
+  float: right;
+  padding: 10px;
+  font-weight: bolder;
+}
+
+.not-member a {
+  text-decoration: none;
+}
+
+@media screen and (max-width: 800px) {
+  .mother-left-right {
+    flex-direction: column;
+  }
+
+  .child-right img {
+    width: 100%;
+    margin: auto;
+  }
+}

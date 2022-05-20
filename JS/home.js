@@ -46,3 +46,22 @@ function aboutUs() {
 function myacc() {
   window.location.href = "myaccnew.php";
 }
+function myaccAdmin() {
+  window.location.href = "myaccAdmin.php";
+}
+window.setTimeout(drop, 3000);
+
+function drop() {
+  document.getElementById("drop").style.display = "none";
+}
+function notAmember() {
+  window.location.href = "register.php";
+}
+function alreadyAmember() {
+  window.location.href = "loginForm.php";
+}
+window.setTimeout(status1, 2000);
+
+function status1() {
+  document.getElementById("status1").style.display = "none";
+}

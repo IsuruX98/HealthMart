@@ -1,0 +1,34 @@
+.viewCartOrders-main {
+  margin: auto;
+  padding: 40px;
+}
+
+.viewCartOrders-main h1 {
+  margin-bottom: 20px;
+}
+
+.viewCartOrders {
+  width: 100%;
+}
+
+.viewCartOrders tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.viewCartOrders tr:hover {
+  background-color: #ddd;
+}
+
+.viewCartOrders th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #212121;
+  color: white;
+}
+
+.viewCartOrders th,
+.viewCartOrders td {
+  padding: 10px;
+  border-bottom: 1px solid #aaa;
+}

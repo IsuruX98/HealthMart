@@ -39,7 +39,7 @@ if (isset($_GET['item_ID'])) {
         header('Location: itemlist.php?err=query_failed');
     }
 }
-//check if form submitted, insert from form into user table
+//check if form submitted,
 if (isset($_POST['submit'])) {
     $item_ID = $_POST['item_ID'];
     $genericname = $_POST['genericname'];
@@ -114,65 +114,12 @@ if (isset($_POST['submit'])) {
     <link rel="shortcut icon" href="/Images/logo.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/CSS/template2.css" />
     <link rel="stylesheet" href="/CSS/normalize.css" />
+    <link rel="stylesheet" href="/CSS/modifyItem.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
     <!--stylesheet for icons in footer -->
-    <style>
-        .addNewItemPage {
-            padding: 50px;
-        }
-
-        .addNewItemPage hr {
-            border: 1px solid #f1f1f1;
-            margin-bottom: 25px;
-        }
-
-        .addNewItemPage form {
-            border: 3px solid #f1f1f1;
-            padding: 25px;
-        }
-
-        .addNewItemPage input[type="text"] {
-            width: 100%;
-            padding: 12px 20px;
-            margin: 8px 0;
-            display: inline-block;
-            border: 1px solid #ccc;
-            box-sizing: border-box;
-        }
-
-        .addNewItemPage-container button {
-            background-color: #25262e;
-            color: white;
-            padding: 14px 20px;
-            margin: 8px 0;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-        }
-
-        .addNewItemPage-container button:hover {
-            background-color: #2196f3;
-            color: black;
-            transition: 0.3s;
-        }
-
-        .cancelbtn-container .cancelbtn {
-            width: 100%;
-            padding: 10px 18px;
-            background-color: #f44336;
-            margin: 8px 0;
-            border: none;
-            cursor: pointer;
-            color: white;
-        }
-
-        .cancelbtn-container button:hover {
-            color: black;
-            transition: 0.3s;
-        }
-    </style>
+    <script src="/JS/cancel.js"></script>
     <script src="addnewitem.js"></script>
-    <script src="admindashboard.js"></script>
+    <script src="/JS/admindashboard.js"></script>
 </head>
 
 <body>
@@ -183,12 +130,14 @@ if (isset($_POST['submit'])) {
         </div>
     </div>
     <div class="menu">
-        <a class="active" onclick="adminDashBoard();"><i class="fa fa-fw fa-home"></i> Home</a>
-        <a href="#" onclick="addnewItem();">Add New Items</a>
-        <a href="#" onclick="viewItems();">View Items, Update & Delete</a>
-        <a href="#" onclick="viewContactUs();">View Contact Us</a>
-        <a href="#" onclick="viewPreupOrders();">View Prescription Orders</a>
-        <a href="#" onclick="viewCartOrders();">View Cart Orders</a>
+        <div class="menu-links">
+            <a class="active" onclick="adminDashBoard();"><i class="fa fa-fw fa-home"></i> Home</a>
+            <a href="#" onclick="addnewItem();">Add New Items</a>
+            <a href="#" onclick="viewItems();">View Items, Update & Delete</a>
+            <a href="#" onclick="viewContactUs();">View Contact Us</a>
+            <a href="#" onclick="viewPreupOrders();">View Prescription Orders</a>
+            <a href="#" onclick="viewCartOrders();">View Cart Orders</a>
+        </div>
         <div class="search-container">
 
         </div>
@@ -234,7 +183,7 @@ if (isset($_POST['submit'])) {
             </div>
 
             <div class="cancelbtn-container">
-                <button type="button" class="cancelbtn">Cancel</button>
+                <button type="button" class="cancelbtn" onclick="cancelModify();">Cancel</button>
             </div>
         </form>
     </div>

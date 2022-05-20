@@ -1,0 +1,48 @@
+#aboutusi {
+  display: flex;
+  margin: 20px;
+}
+
+.aboutusimg {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.aboutusimg img {
+  width: 100%;
+  margin: auto;
+}
+
+.details {
+  padding: 20px;
+  width: 70%;
+}
+
+.details h1 {
+  padding-top: 10px 0 10px 0;
+}
+
+.details h2 {
+  padding-top: 10px 0 10px 0;
+}
+
+.register {
+  background-color: #25262e;
+  color: white;
+  padding: 0px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 140px;
+  height: 30px;
+  font-size: small;
+  text-align: center;
+}
+
+.register:hover {
+  background-color: #2196f3;
+  color: black;
+  transition: 0.3s;
+}

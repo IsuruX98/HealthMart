@@ -1,7 +1,7 @@
+<?php session_start(); ?>
 <?php
 //include database connection
 require_once 'conn.php'; ?>
-<?php session_start(); ?>
 <?php
 $itemList = '';
 $items = '';
@@ -21,47 +21,6 @@ if (isset($_GET['search'])) {
     }
 }
 ?>
-<?php
-
-$status = "";
-
-if (isset($_POST['code']) && $_POST['code'] != "") {
-
-    $code = $_POST['code'];
-    $result = mysqli_query($conn, "SELECT * FROM `item` WHERE `code`='$code'");
-    $row = mysqli_fetch_assoc($result);
-    $genericName = $row['genericName'];
-    $brandName = $row['brandName'];
-    $code = $row['code'];
-    $itemPrice = $row['itemPrice'];
-    $itemImage = $row['itemImage'];
-
-    $cartArray = array(
-        $code => array(
-            'genericName' => $genericName,
-            'brandName' => $brandName,
-            'code' => $code,
-            'itemPrice' => $itemPrice,
-            'quantity' => 1,
-            'itemImage' => $itemImage,
-        ),
-    );
-    if (empty($_SESSION["shopping_cart"])) {
-        $_SESSION["shopping_cart"] = $cartArray;
-        $status = "Product is added to your cart!";
-    } else {
-        $array_keys = array_keys($_SESSION["shopping_cart"]);
-        if (in_array($code, $array_keys)) {
-            $status = "<p class=\"red\">Product is already added to your cart!<p>";
-        } else {
-            $_SESSION["shopping_cart"] = array_merge($_SESSION["shopping_cart"], $cartArray);
-            $status = "Product is added to your cart!";
-        }
-    }
-}
-
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -73,7 +32,7 @@ if (isset($_POST['code']) && $_POST['code'] != "") {
     <link rel="shortcut icon" href="/Images/logo.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/CSS/template2.css" />
     <link rel="stylesheet" href="/CSS/normalize.css" />
-    <link rel="stylesheet" href="/CSS/store.css" />
+    <link rel="stylesheet" href="/CSS/privacyPolicy.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
     <!--stylesheet for icons in footer -->
     <script src="/JS/home.js"></script>
@@ -110,7 +69,7 @@ if (isset($_POST['code']) && $_POST['code'] != "") {
             <a href="#" onclick="aboutUs();">About us</a>
         </div>
         <div class="search-container">
-            <form action="medicalDevices.php" method="GET">
+            <form action="privacyPolicy.php" method="GET">
                 <input type="text" placeholder="Search.." name="search" />
                 <button type="submit">Submit</button>
             </form>
@@ -123,35 +82,60 @@ if (isset($_POST['code']) && $_POST['code'] != "") {
             </div>
         </div>
     </div>
-    <br>
-    <h2>
-        <t>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;Medical Devices
-    </h2>
-    <div class="status" id="status1">
-        <?php echo $status; ?>
-    </div>
-    <section id="product1" class="section-p1">
-        <div class="pro-container">
+    <div class="privacy">
+        <br />
+        <br />
+        <h1>Privacy Policy</h1>
+        <br />
+        <h2>Information We Collect</h2>
+        <p>
+            We collect your personal or contact information solely for the purpose
+            of processing your orders and ensuring that you receive them in a timely
+            manner. To make our online store more user pleasant and customised for
+            our users or customers, we gather or collect information about your
+            technical equipment, such as visiting our store or on-site behavior. In
+            order to provide you with the best customer service possible, our online
+            store collaborates with third-party firms. These third-party firms only
+            utilize a small portion of the personal information you provide on our
+            site, and they only need it to fulfill their obligations. <br /><br />
+            Payment services authenticate and execute your payments for the things
+            you buy on our site using your credit card number, name, and surname.<br /><br />
+            Our manufacturers and stockkeepers assemble the necessary order for you
+            using the data from your order contents. Your first name, surname name,
+            and physical address are used by postal services to deliver the product
+            to you. <br /><br />If you continue to browse our webstore after reading
+            this Privacy Policy, you consent to us using your personal information
+            for the purposes described above.<br /><br />
+            Please exit the website immediately if you do not agree to these
+            terms..!
+        </p>
+        <br />
+        <h2>Use Of Cookies</h2>
+        <p>
+            We provide high-quality, effective medication right to your door. At our
+            pharmacy, there is no place for fraud or unlawful tactics, as we want to
+            build and maintain good relationships with our customers.
 
-            <?php
-            $result = mysqli_query($conn, "SELECT * FROM `item` WHERE `type` = 'medical devices'");
-            while ($row = mysqli_fetch_assoc($result)) {
-                echo "<div class='pro'>
-                  <form method='post' action=''>
-                  <input type='hidden' name='code' value=" . $row['code'] . " />
-                  <img src='itemImg/" . $row['itemImage'] . "' />
-                  <div class='des'>
-                  <span>" . $row['genericName'] . "</span>
-                  <h5>" . $row['brandName'] . "</h5>
-                  <h4>Rs. " . $row['itemPrice'] . "</h4>
-                  <button type='submit' class='button'>Add to Cart</button>
-                  </div>
-                  </form>
-                     </div>";
-            }
-            ?>
-        </div>
-    </section>
+            <br /><br />
+            Our primary goal is to ensure that our clients are satisfied with our
+            efficient and proper approach, as well as the confidentiality of their
+            personal information. We offer a large choice of FDA-approved generic
+            and branded medications at affordable prices and with significant
+            discounts. Customers frequently cancel previously placed orders for a
+            variety of reasons, and this is authorized only to a certain extent.
+
+            <br /><br />
+            Cancelling an order that has already been placed should be done within
+            12–24 hours after placing it. <br /><br />
+            Your cancellation request should be made to healthmart.com through
+            email. <br />
+            After 24 hours from the moment you placed your order, no cancellation
+            requests will be accepted. <br /><br />Thank you so much for your help!
+        </p>
+        <br />
+        <br />
+        <br />
+    </div>
     <footer>
         <div class="row primary">
             <div class="column about">
@@ -196,17 +180,6 @@ if (isset($_POST['code']) && $_POST['code'] != "") {
             <p>© 2022 HealthMart,inc. All rights reserved.</p>
         </div>
     </footer>
-
-
-
-
-
-
-
 </body>
 
 </html>
-<?php
-//close connection to database
-mysqli_close($conn);
-?>

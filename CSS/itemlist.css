@@ -1,0 +1,81 @@
+.itemList-main {
+  margin: auto;
+  padding: 40px;
+}
+
+.itemList-main h1 {
+  margin-bottom: 20px;
+}
+
+.itemList {
+  width: 100%;
+}
+
+.itemList tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.itemList tr:hover {
+  background-color: #ddd;
+}
+
+.itemList th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #212121;
+  color: white;
+}
+
+.itemList th,
+.itemList td {
+  padding: 10px;
+  border-bottom: 1px solid #aaa;
+}
+
+#searchbox {
+  width: 100%;
+  padding: 10px;
+}
+
+.itemListDltBtn {
+  padding: 2px 4px;
+  background-color: crimson;
+  border: none;
+  cursor: pointer;
+}
+
+.itemListDltBtn:hover {
+  background-color: #212121;
+  transition: 0.3s;
+}
+
+.itemListDltBtn a:visited {
+  color: white;
+}
+
+.itemListDltBtn a {
+  text-decoration: none;
+  color: white;
+}
+
+.itemListEditBtn {
+  padding: 2px 4px;
+  background-color: dodgerblue;
+  border: none;
+  cursor: pointer;
+}
+
+.itemListEditBtn:hover {
+  background-color: #212121;
+  transition: 0.3s;
+}
+
+.itemListEditBtn a:visited {
+  color: white;
+}
+
+.itemListEditBtn a {
+  text-decoration: none;
+  color: white;
+}
