@@ -6,6 +6,25 @@ if (!isset($_SESSION['user_id'])) {
 }
 ?>
 <?php
+$itemList = '';
+$items = '';
+$errors = array();
+//check if there is a search term
+if (isset($_GET['search'])) {
+  $search = mysqli_real_escape_string($conn, $_GET['search']);
+  $query = "SELECT * FROM item WHERE (genericName LIKE '%{$search}%' OR brandName LIKE '%{$search}%') AND isDeleted = 0 ORDER BY genericName";
+
+  $items = mysqli_query($conn, $query);
+  if ($items) {
+    while ($item = mysqli_fetch_assoc($items)) {
+      $itemList .= "<a href=\"searchedItem.php?item_ID={$item['itemID']}\">{$item['genericName']} / {$item['brandName']}</a>";
+    }
+  } else {
+    $errors[] = 'Database query failed.';
+  }
+}
+?>
+<?php
 //include database connection
 require_once 'conn.php';
 $errors = array();
@@ -72,129 +91,26 @@ if (isset($_POST['submit'])) {
   <link rel="shortcut icon" href="/Images/logo.ico" type="image/x-icon" />
   <link rel="stylesheet" href="/CSS/template2.css" />
   <link rel="stylesheet" href="/CSS/normalize.css" />
+  <link rel="stylesheet" href="/CSS/changepw.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
   <!--stylesheet for icons in footer -->
-  <style>
-    .Sign-Up {
-      padding: 50px;
-    }
-
-    .signup-container input[type="text"],
-    .signup-container input[type="email"],
-    .signup-container input[type="password"] {
-      width: 100%;
-      padding: 15px;
-      margin: 5px 0 22px 0;
-      display: inline-block;
-      border: none;
-      background: #f1f1f1;
-    }
-
-    .signup-container input[type="text"]:focus,
-    .signup-container input[type="email"]:focus,
-    .signup-container input[type="password"]:focus {
-      background-color: #ddd;
-      outline: none;
-    }
-
-    .signup-container hr {
-      border: 1px solid #f1f1f1;
-      margin-bottom: 25px;
-    }
-
-    .signup-container button {
-      background-color: black;
-      color: white;
-      padding: 14px 20px;
-      margin: 8px 0;
-      border: none;
-      cursor: pointer;
-      width: 100%;
-    }
-
-    .signupfrom-buttons .signupbtn:hover {
-      background-color: #2196f3;
-      color: black;
-      transition: 0.3s;
-    }
-
-    .signupfrom-buttons .cancelbtn {
-      padding: 14px 20px;
-      background-color: #f44336;
-    }
-
-    .signupfrom-buttons .cancelbtn:hover {
-      color: black;
-      transition: 0.3s;
-    }
-
-    .signup-container {
-      padding: 16px;
-      margin: 16px;
-      margin-bottom: 50px;
-    }
-
-    /* Clear floats */
-    .Sign-Up .signupfrom-buttons::after {
-      content: "";
-      clear: both;
-      display: table;
-    }
-
-    .error {
-      color: #f44336;
-    }
-
-    .register-mother-left-right {
-      display: flex;
-      flex-direction: row;
-    }
-
-    .register-child-left {
-      flex: 50%;
-      padding: 20px;
-    }
-
-    .register-child-right {
-      flex: 60%;
-      padding: 20px;
-    }
-
-    .register-child-left img {
-      width: 100%;
-      padding: 20px;
-      margin: auto;
-      display: block;
-      margin-top: 30%;
-    }
-
-    @media screen and (max-width: 800px) {
-      .register-mother-left-right {
-        flex-direction: column-reverse;
-      }
-
-      .register-child-right img {
-        width: 100%;
-        margin: auto;
-      }
-    }
-  </style>
-  <script src="home.js"></script>
-  <script src="editacc.js"></script>
+  <script src="/JS/home.js"></script>
+  <script src="/JS/editacc.js"></script>
+  <script src="/JS/cancel.js"></script>
 </head>
 
 <body>
   <div class="header">
     <a href="#" onclick="home();" class="logo"><i class="far fa-eye"></i> HealthMart</a>
     <div class="header-right">
-      <div><?php
-            if (isset($_SESSION['user_id'])) {
-              echo "<a onclick=\"myacc();\"><i class=\"far fa-user-circle\"> </i>&nbsp;&nbsp;&nbsp;";
-              echo $_SESSION['name'] . "</a>";
-            } else {
-              echo "<a onclick=\"register();\"><i class=\"far fa-user-circle\"></i> Sign in</a>";
-            }
-            ?></div>
+      <?php
+      if (isset($_SESSION['user_id'])) {
+        echo "<a onclick=\"myacc();\"><i class=\"far fa-user-circle\"> </i>&nbsp;&nbsp;&nbsp;";
+        echo $_SESSION['name'] . "</a>";
+      } else {
+        echo "<a onclick=\"register();\"><i class=\"far fa-user-circle\"></i> Sign in</a>";
+      }
+      ?>
       <?php
       if (!empty($_SESSION["shopping_cart"])) {
         $cart_count = count(array_keys($_SESSION["shopping_cart"]));
@@ -203,20 +119,28 @@ if (isset($_POST['submit'])) {
       <?php
       }
       ?>
-
     </div>
   </div>
   <div class="menu">
-    <a class="active" href="#" onclick="home();"><i class="fa fa-fw fa-home"></i> Home</a>
-    <a href="#" onclick="medicine();">Medicines</a>
-    <a href="#" onclick="medicalDevices();">Medical Devices</a>
-    <a href="#" onclick="traditionalRemedies();">Traditional Remedies</a>
-    <a href="#" onclick="aboutUs();">About us</a>
+    <div class="menu-links">
+      <a class="active" href="#" onclick="home();"><i class="fa fa-fw fa-home"></i> Home</a>
+      <a href="#" onclick="medicine();">Medicines</a>
+      <a href="#" onclick="medicalDevices();">Medical Devices</a>
+      <a href="#" onclick="traditionalRemedies();">Traditional Remedies</a>
+      <a href="#" onclick="aboutUs();">About us</a>
+    </div>
     <div class="search-container">
-      <form action="/action_page.php">
+      <form action="changepw.php" method="GET">
         <input type="text" placeholder="Search.." name="search" />
         <button type="submit">Submit</button>
       </form>
+      <div class="dropdown-content" id="drop">
+        <?php
+        if ($items) {
+          echo $itemList;
+        }
+        ?>
+      </div>
     </div>
   </div>
   <div class="register-mother-left-right">
@@ -227,8 +151,8 @@ if (isset($_POST['submit'])) {
       <div class="Sign-Up">
         <form action="changepw.php" method="POST" name="RegForm" enctype="multipart/form-data">
           <div class="signup-container">
-            <h1>Update Account</h1>
-            <p>Please fill this form to update your account.</p>
+            <h1>Change Password</h1>
+            <p>Please fill this form to update your password.</p>
             <hr />
             <!-- display error messages from php validation -->
             <?php
@@ -253,7 +177,7 @@ if (isset($_POST['submit'])) {
             </p>
             <div class="signupfrom-buttons">
               <button type="submit" class="signupbtn" name="submit" onclick="return confirm('Are you sure you want to update your Password?');">Update Password</button>
-              <button type="button" class="cancelbtn" onclick="cancelUpdate();">Cancel</button>
+              <button type="button" class="cancelbtn" onclick="cancelModifyacc();">Cancel</button>
             </div>
           </div>
         </form>

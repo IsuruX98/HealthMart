@@ -24,6 +24,7 @@ body {
 }
 
 .header a {
+  cursor: pointer;
   float: left;
   color: white;
   text-align: center;
@@ -62,12 +63,13 @@ body {
 /*----------Header CSS End from here*----------/
 /*----------Nav bar and search CSS starts here----------*/
 .menu {
-  overflow: hidden;
+  display: flex;
   background-color: #404040;
   position: fixed;
   position: sticky;
   top: 0;
   z-index: 9999;
+  justify-content: space-between;
 }
 
 .menu a {
@@ -250,7 +252,35 @@ div.social {
   text-align: right;
 }
 
-/*----------footer CSS End from here*----------/
+/*----------footer CSS End from here*----------*/
+.dropdown-content {
+  display: flex;
+  flex-wrap: nowrap;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgb(0 0 0 / 20%);
+  z-index: 9999;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+  text-align: left;
+}
+
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
 /*--------------------media query for smaller screens starts here.--------------------*/
 @media screen and (max-width: 800px) {
   .header a {
@@ -266,6 +296,9 @@ div.social {
   .menu .search-container {
     float: none;
   }
+  .menu {
+    flex-direction: column;
+  }
 
   .menu a,
   .menu input[type="text"],
@@ -276,6 +309,7 @@ div.social {
     width: 100%;
     margin: 0;
     padding: 14px;
+    flex-direction: row;
   }
 
   .menu input[type="text"] {

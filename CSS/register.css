@@ -1,0 +1,113 @@
+.Sign-Up {
+  padding: 50px;
+}
+
+.signup-container input[type="text"],
+.signup-container input[type="email"],
+.signup-container input[type="password"] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+.signup-container input[type="text"]:focus,
+.signup-container input[type="email"]:focus,
+.signup-container input[type="password"]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+.signup-container hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+.signup-container button {
+  background-color: black;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.signupfrom-buttons .signupbtn:hover {
+  background-color: #2196f3;
+  color: black;
+  transition: 0.3s;
+}
+
+.signupfrom-buttons .cancelbtn {
+  padding: 14px 20px;
+  background-color: #f44336;
+}
+
+.signupfrom-buttons .cancelbtn:hover {
+  color: black;
+  transition: 0.3s;
+}
+
+.signup-container {
+  padding: 16px;
+  margin: 16px;
+  margin-bottom: 50px;
+}
+
+/* Clear floats */
+.Sign-Up .signupfrom-buttons::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.error {
+  color: #f44336;
+}
+
+.register-mother-left-right {
+  display: flex;
+  flex-direction: row;
+}
+
+.register-child-left {
+  flex: 50%;
+  padding: 20px;
+}
+
+.register-child-right {
+  flex: 60%;
+  padding: 20px;
+}
+
+.register-child-left img {
+  width: 100%;
+  padding: 20px;
+  margin: auto;
+  display: block;
+  margin-top: 30%;
+}
+
+.already-member {
+  float: right;
+  padding: 10px;
+  font-weight: bolder;
+}
+
+.already-member a {
+  text-decoration: none;
+}
+
+@media screen and (max-width: 800px) {
+  .register-mother-left-right {
+    flex-direction: column-reverse;
+  }
+
+  .register-child-right img {
+    width: 100%;
+    margin: auto;
+  }
+}

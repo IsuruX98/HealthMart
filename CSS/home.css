@@ -1,0 +1,233 @@
+/*----------Slider1 CSS part starts here----------*/
+
+#slider1 {
+  overflow: hidden;
+}
+
+#slider1 figure {
+  position: relative;
+  width: 500%;
+  margin: 0;
+  left: 0;
+  animation: 15s slider1 infinite;
+}
+
+#slider1 figure img {
+  width: 20%;
+  float: left;
+}
+
+@keyframes slider1 {
+  0% {
+    left: 0%;
+  }
+
+  16.66% {
+    left: 0%;
+  }
+
+  33.32% {
+    left: -100%;
+  }
+
+  49.98% {
+    left: -100%;
+  }
+
+  66.64% {
+    left: -200%;
+  }
+
+  83.30% {
+    left: -200%;
+  }
+
+  100% {
+    left: 0%;
+  }
+}
+
+/*----------Slider1 CSS part End here----------*/
+/*----------Icon image CSS part starts here----------*/
+.iconimage img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+/*----------Icon image CSS End ends here----------*/
+/*----------Flexbox is divided into three parts for prescription upload, explore the store, and slider two starting from here.----------*/
+.flex-container {
+  display: flex;
+  font-size: 30px;
+  text-align: center;
+  margin: 30px;
+  margin-bottom: 5%;
+  flex-direction: row;
+  gap: 45px;
+}
+
+.flex-item-left1 {
+  padding: 20px;
+  flex: 50%;
+  background-image: url("/Images/prescription.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.flex-item-middle1 {
+  padding: 20px;
+  flex: 50%;
+  background-image: url("/Images/shopnow.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.flex-item-right1 {
+  flex: 50%;
+  padding: 20px;
+}
+
+.flex-item-right1-up-down {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-item-right1-up {
+  flex: 50%;
+  margin-top: -20px;
+}
+
+.flex-item-right1-down {
+  padding: 20px;
+  flex: 50%;
+  margin-top: -25px;
+}
+
+.flex-item-left1 .container {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.flex-item-left1 a {
+  text-decoration: none;
+}
+
+.flex-item-left1 a:visited {
+  color: inherit;
+}
+
+.flex-item-middle1 .container {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.container {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+.container img {
+  width: 100%;
+  height: auto;
+}
+
+.container .btn {
+  position: relative;
+  transform: translate(-50%, -50%);
+  color: black;
+  font-size: 16px;
+  padding: 12px 24px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  text-align: center;
+  background: #ddd;
+  font-size: 17px;
+  width: 150px;
+  margin-top: 75%;
+  margin-right: -100%;
+}
+
+.container .btn:hover {
+  background: black;
+  color: white;
+  transition: 0.3s;
+}
+
+/*----------Slider2 CSS part Starts here----------*/
+#slider2 {
+  overflow: hidden;
+  padding: 20px;
+  flex: 50%;
+}
+
+#slider2 figure {
+  position: relative;
+  width: 500%;
+  margin: 0;
+  left: 0;
+  animation: 35s slider2 infinite;
+}
+
+#slider2 figure img {
+  width: 20%;
+  float: left;
+}
+
+@keyframes slider2 {
+  0% {
+    left: 0%;
+  }
+
+  10% {
+    left: 0%;
+  }
+
+  20% {
+    left: -100%;
+  }
+
+  30% {
+    left: -200%;
+  }
+
+  40% {
+    left: -300%;
+  }
+
+  50% {
+    left: -400%;
+  }
+
+  60% {
+    left: -400%;
+  }
+
+  70% {
+    left: -300%;
+  }
+
+  80% {
+    left: -200%;
+  }
+
+  90% {
+    left: -100%;
+  }
+
+  100% {
+    left: 0%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .flex-container {
+    flex-direction: column;
+  }
+}
+
+/*----------Slider2 CSS part End here----------*/

@@ -1,0 +1,34 @@
+.presup-main {
+  padding: 5%;
+}
+
+.presup-submit {
+  background-color: black;
+  color: white;
+  padding: 30px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.presup-submit:hover {
+  background-color: #2196f3;
+  color: black;
+  transition: 0.3s;
+}
+
+.presup-ytxtarea {
+  width: 100%;
+}
+
+.presup-main img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 6%;
+}
+
+.errors {
+  color: red;
+}

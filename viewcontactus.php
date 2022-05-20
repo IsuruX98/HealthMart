@@ -20,6 +20,7 @@ if ($uIdeas) {
         $contactusList .= "<td>{$uIdea['email']}</td>";
         $contactusList .= "<td>{$uIdea['mobileNo']}</td>";
         $contactusList .= "<td>{$uIdea['userIdeas']}</td>";
+        $contactusList .= "<td>{$uIdea['comment-date-and-Time']}</td>";
         $contactusList .= "</tr>";
     }
 } else {
@@ -38,46 +39,10 @@ if ($uIdeas) {
     <link rel="shortcut icon" href="/Images/logo.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/CSS/template2.css" />
     <link rel="stylesheet" href="/CSS/normalize.css" />
+    <link rel="stylesheet" href="/CSS/viewcontactus.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
     <!--stylesheet for icons in footer -->
-    <style>
-        .contactusList-main {
-            margin: auto;
-            padding: 20px;
-        }
-
-        .contactusList-main h1 {
-            margin-bottom: 20px;
-        }
-
-        .contactusList {
-            width: 100%;
-
-        }
-
-        .contactusList tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-
-        .contactusList tr:hover {
-            background-color: #ddd;
-        }
-
-        .contactusList th {
-            padding-top: 12px;
-            padding-bottom: 12px;
-            text-align: left;
-            background-color: #212121;
-            color: white;
-        }
-
-        .contactusList th,
-        .contactusList td {
-            padding: 10px;
-            border-bottom: 1px solid #aaa;
-        }
-    </style>
-    <script src="admindashboard.js"></script>
+    <script src="/JS/admindashboard.js"></script>
 </head>
 
 <body>
@@ -88,24 +53,28 @@ if ($uIdeas) {
         </div>
     </div>
     <div class="menu">
-        <a class="active" onclick="adminDashBoard();"><i class="fa fa-fw fa-home"></i> Home</a>
-        <a href="#" onclick="addnewItem();">Add New Items</a>
-        <a href="#" onclick="viewItems();">View Items, Update & Delete</a>
-        <a href="#" onclick="viewContactUs();">View Contact Us</a>
-        <a href="#" onclick="viewPreupOrders();">View Prescription Orders</a>
-        <a href="#" onclick="viewCartOrders();">View Cart Orders</a>
+        <div class="menu-links">
+            <a class="active" onclick="adminDashBoard();"><i class="fa fa-fw fa-home"></i> Home</a>
+            <a href="#" onclick="addnewItem();">Add New Items</a>
+            <a href="#" onclick="viewItems();">View Items, Update & Delete</a>
+            <a href="#" onclick="viewContactUs();">View Contact Us</a>
+            <a href="#" onclick="viewPreupOrders();">View Prescription Orders</a>
+            <a href="#" onclick="viewCartOrders();">View Cart Orders</a>
+        </div>
         <div class="search-container">
 
         </div>
     </div>
     <main class="contactusList-main">
         <h2>User Ideas and inquiries list</h2>
+        <br />
         <table class="contactusList">
             <tr>
                 <th>Name</th>
                 <th>E-mail</th>
                 <th>Mobile No</th>
                 <th>User Ideas</th>
+                <th>Date and time</th>
             </tr>
             <?php echo $contactusList; ?>
         </table>

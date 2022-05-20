@@ -16,3 +16,7 @@ function viewCartOrders() {
 function adminDashBoard() {
   window.location.href = "admindashboard.php";
 }
+function adminDashBoardCancel() {
+  confirm("Are you sure you want to cancel?");
+  window.location.href = "admindashboard.php";
+}

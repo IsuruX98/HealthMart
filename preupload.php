@@ -9,6 +9,25 @@ if (!isset($_SESSION['user_id'])) {
 }
 ?>
 <?php
+$itemList = '';
+$items = '';
+$errors = array();
+//check if there is a search term
+if (isset($_GET['search'])) {
+  $search = mysqli_real_escape_string($conn, $_GET['search']);
+  $query = "SELECT * FROM item WHERE (genericName LIKE '%{$search}%' OR brandName LIKE '%{$search}%') AND isDeleted = 0 ORDER BY genericName";
+
+  $items = mysqli_query($conn, $query);
+  if ($items) {
+    while ($item = mysqli_fetch_assoc($items)) {
+      $itemList .= "<a href=\"searchedItem.php?item_ID={$item['itemID']}\">{$item['genericName']} / {$item['brandName']}</a>";
+    }
+  } else {
+    $errors[] = 'Database query failed.';
+  }
+}
+?>
+<?php
 $errors = array();
 if (isset($_POST['submit'])) {
   $name = $_POST['name'];
@@ -85,60 +104,26 @@ if (isset($_POST['submit'])) {
   <link rel="shortcut icon" href="/Images/logo.ico" type="image/x-icon" />
   <link rel="stylesheet" href="/CSS/template2.css" />
   <link rel="stylesheet" href="/CSS/normalize.css" />
+  <link rel="stylesheet" href="/CSS/preupload.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
   <!--stylesheet for icons in footer -->
-  <style>
-    .presup-main {
-      padding: 5%;
-    }
-
-    .presup-submit {
-      background-color: black;
-      color: white;
-      padding: 30px 20px;
-      margin: 8px 0;
-      border: none;
-      cursor: pointer;
-      width: 100%;
-    }
-
-    .presup-submit:hover {
-      background-color: #2196f3;
-      color: black;
-      transition: 0.3s;
-    }
-
-    .presup-ytxtarea {
-      width: 100%;
-    }
-
-    .presup-main img {
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-      margin-top: 6%;
-    }
-
-    .errors {
-      color: red;
-    }
-  </style>
-  <script src="preupload.js"></script>
-  <script src="home.js"></script>
+  <script src="/JS/preupload.js"></script>
+  <script src="/JS/home.js"></script>
+  <script src="/JS/cancel.js"></script>
 </head>
 
 <body>
   <div class="header">
     <a href="#" onclick="home();" class="logo"><i class="far fa-eye"></i> HealthMart</a>
     <div class="header-right">
-      <div><?php
-            if (isset($_SESSION['user_id'])) {
-              echo "<a onclick=\"myacc();\"><i class=\"far fa-user-circle\"> </i>&nbsp;&nbsp;&nbsp;";
-              echo $_SESSION['name'] . "</a>";
-            } else {
-              echo "<a onclick=\"register();\"><i class=\"far fa-user-circle\"></i> Sign in</a>";
-            }
-            ?></div>
+      <?php
+      if (isset($_SESSION['user_id'])) {
+        echo "<a onclick=\"myacc();\"><i class=\"far fa-user-circle\"> </i>&nbsp;&nbsp;&nbsp;";
+        echo $_SESSION['name'] . "</a>";
+      } else {
+        echo "<a onclick=\"register();\"><i class=\"far fa-user-circle\"></i> Sign in</a>";
+      }
+      ?>
       <?php
       if (!empty($_SESSION["shopping_cart"])) {
         $cart_count = count(array_keys($_SESSION["shopping_cart"]));
@@ -147,20 +132,28 @@ if (isset($_POST['submit'])) {
       <?php
       }
       ?>
-
     </div>
   </div>
   <div class="menu">
-    <a class="active" href="#" onclick="home();"><i class="fa fa-fw fa-home"></i> Home</a>
-    <a href="#" onclick="medicine();">Medicines</a>
-    <a href="#" onclick="medicalDevices();">Medical Devices</a>
-    <a href="#" onclick="traditionalRemedies();">Traditional Remedies</a>
-    <a href="#" onclick="aboutUs();">About us</a>
+    <div class="menu-links">
+      <a class="active" href="#" onclick="home();"><i class="fa fa-fw fa-home"></i> Home</a>
+      <a href="#" onclick="medicine();">Medicines</a>
+      <a href="#" onclick="medicalDevices();">Medical Devices</a>
+      <a href="#" onclick="traditionalRemedies();">Traditional Remedies</a>
+      <a href="#" onclick="aboutUs();">About us</a>
+    </div>
     <div class="search-container">
-      <form action="/action_page.php">
+      <form action="preupload.php" method="GET">
         <input type="text" placeholder="Search.." name="search" />
         <button type="submit">Submit</button>
       </form>
+      <div class="dropdown-content" id="drop">
+        <?php
+        if ($items) {
+          echo $itemList;
+        }
+        ?>
+      </div>
     </div>
   </div>
   <section class="presup-main">
@@ -300,12 +293,6 @@ if (isset($_POST['submit'])) {
       <p>© 2022 HealthMart,inc. All rights reserved.</p>
     </div>
   </footer>
-
-
-
-
-
-
 
 </body>
 

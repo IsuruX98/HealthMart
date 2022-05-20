@@ -1,0 +1,34 @@
+.contactusList-main {
+  margin: auto;
+  padding: 40px;
+}
+
+.contactusList-main h1 {
+  margin-bottom: 20px;
+}
+
+.contactusList {
+  width: 100%;
+}
+
+.contactusList tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+.contactusList tr:hover {
+  background-color: #ddd;
+}
+
+.contactusList th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #212121;
+  color: white;
+}
+
+.contactusList th,
+.contactusList td {
+  padding: 10px;
+  border-bottom: 1px solid #aaa;
+}

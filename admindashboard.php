@@ -19,122 +19,35 @@ if (!isset($_SESSION['user_id'])) {
   <link rel="shortcut icon" href="/Images/logo.ico" type="image/x-icon" />
   <link rel="stylesheet" href="/CSS/template2.css" />
   <link rel="stylesheet" href="/CSS/normalize.css" />
+  <link rel="stylesheet" href="/CSS/admindashboard.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
   <!--stylesheet for icons in footer -->
-  <style>
-    .admin1 {
-      text-align: center;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      font-size: x-large;
-    }
-
-    #admin {
-      display: flex;
-      margin: 20px;
-    }
-
-    .section111 {
-      padding: 2% 2% 5% 2%;
-    }
-
-    .navigate1,
-    .navigate2,
-    .navigate3,
-    .navigate4,
-    .navigate5 {
-      text-align: center;
-      text-decoration: none;
-      font-size: 30px;
-      cursor: pointer;
-      border-radius: 25px;
-      padding: 50px 20px 20px 10px;
-      transition: all 0.3s ease 0s;
-      width: 20%;
-      margin-right: 50px;
-      height: 10cm;
-      margin: 23px;
-    }
-
-    .jcbutton {
-      background: transparent;
-      border: none;
-      color: #ffffff;
-      font-weight: bold;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
-
-    .navigate1 {
-      background-color: #26abff;
-      box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.4);
-    }
-
-    .navigate1:hover {
-      background-color: #000000;
-      box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.4);
-      color: #f1f1f1;
-    }
-
-    .navigate2 {
-      background-color: #59bfff;
-      box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.4);
-    }
-
-    .navigate2:hover {
-      background-color: #000000;
-      box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.4);
-      color: #f1f1f1;
-    }
-
-    .navigate3 {
-      background-color: #ababab;
-      box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.4);
-    }
-
-    .navigate3:hover {
-      background-color: #000000;
-      box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.4);
-      color: #f1f1f1;
-    }
-
-    .navigate4 {
-      background-color: #7e7e7e;
-      box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.4);
-    }
-
-    .navigate4:hover {
-      background-color: #000000;
-      box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.4);
-      color: #f1f1f1;
-    }
-
-    .navigate5 {
-      background-color: #4d4d4d;
-      box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.4);
-    }
-
-    .navigate5:hover {
-      background-color: #000000;
-      box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.4);
-      color: #f1f1f1;
-    }
-  </style>
-  <script src="admindashboard.js"></script>
+  <script src="/JS/home.js"></script>
+  <script src="/JS/admindashboard.js"></script>
+  <script src="/JS/cancel.js"></script>
 </head>
 
 <body>
   <div class="header">
     <a href="#default" class="logo"><i class="far fa-eye"></i> HealthMart</a>
     <div class="header-right">
-      <a href="#" onclick="adminDashBoard();"><i class="far fa-user-circle"> </i>&nbsp;&nbsp;&nbsp;<?php echo $_SESSION['name']; ?></a>
+      <?php
+      if (isset($_SESSION['user_id'])) {
+        echo "<a onclick=\"myaccAdmin();\"><i class=\"far fa-user-circle\"> </i>&nbsp;&nbsp;&nbsp;";
+        echo $_SESSION['name'] . "</a>";
+      }
+      ?>
     </div>
   </div>
   <div class="menu">
-    <a class="active" onclick="adminDashBoard();"><i class="fa fa-fw fa-home"></i> Home</a>
-    <a href="#" onclick="addnewItem();">Add New Items</a>
-    <a href="#" onclick="viewItems();">View Items, Update & Delete</a>
-    <a href="#" onclick="viewContactUs();">View Contact Us</a>
-    <a href="#" onclick="viewPreupOrders();">View Prescription Orders</a>
-    <a href="#" onclick="viewCartOrders();">View Cart Orders</a>
+    <div class="menu-links">
+      <a class="active" onclick="adminDashBoard();"><i class="fa fa-fw fa-home"></i> Home</a>
+      <a href="#" onclick="addnewItem();">Add New Items</a>
+      <a href="#" onclick="viewItems();">View Items, Update & Delete</a>
+      <a href="#" onclick="viewContactUs();">View Contact Us</a>
+      <a href="#" onclick="viewPreupOrders();">View Prescription Orders</a>
+      <a href="#" onclick="viewCartOrders();">View Cart Orders</a>
+    </div>
     <div class="search-container">
 
     </div>
@@ -166,7 +79,7 @@ if (!isset($_SESSION['user_id'])) {
     </div>
     <div class="navigate5" onclick="viewCartOrders();">
       <button class="jcbutton">View Cart Orders</button>
-      <br /><br /><br /><br /><br />
+      <br /><br /><br /><br />
       <i class="fa-solid fa-cart-plus"></i>
     </div>
   </section>

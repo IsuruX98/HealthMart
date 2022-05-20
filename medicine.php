@@ -3,14 +3,32 @@
 require_once 'conn.php'; ?>
 <?php session_start(); ?>
 <?php
+$itemList = '';
+$items = '';
+$errors = array();
+//check if there is a search term
+if (isset($_GET['search'])) {
+    $search = mysqli_real_escape_string($conn, $_GET['search']);
+    $query = "SELECT * FROM item WHERE (genericName LIKE '%{$search}%' OR brandName LIKE '%{$search}%') AND isDeleted = 0 ORDER BY genericName";
+
+    $items = mysqli_query($conn, $query);
+    if ($items) {
+        while ($item = mysqli_fetch_assoc($items)) {
+            $itemList .= "<a href=\"searchedItem.php?item_ID={$item['itemID']}\">{$item['genericName']} / {$item['brandName']}</a>";
+        }
+    } else {
+        $errors[] = 'Database query failed.';
+    }
+}
+?>
+<?php
 
 $status = "";
 
 if (isset($_POST['code']) && $_POST['code'] != "") {
-    // echo $_POST['code'];
+
     $code = $_POST['code'];
     $result = mysqli_query($conn, "SELECT * FROM `item` WHERE `code`='$code'");
-    // echo $result;
     $row = mysqli_fetch_assoc($result);
     $genericName = $row['genericName'];
     $brandName = $row['brandName'];
@@ -30,14 +48,14 @@ if (isset($_POST['code']) && $_POST['code'] != "") {
     );
     if (empty($_SESSION["shopping_cart"])) {
         $_SESSION["shopping_cart"] = $cartArray;
-        $status = "<script>alert('Product is added to your cart!')</script>";
+        $status = "Product is added to your cart!";
     } else {
         $array_keys = array_keys($_SESSION["shopping_cart"]);
         if (in_array($code, $array_keys)) {
-            $status = "<script>alert('Product is already added to your cart!')</script>";
+            $status = "<p class=\"red\">Product is already added to your cart!<p>";
         } else {
             $_SESSION["shopping_cart"] = array_merge($_SESSION["shopping_cart"], $cartArray);
-            $status = "<script>alert('Product is added to your cart!')</script>";
+            $status = "Product is added to your cart!";
         }
     }
 }
@@ -55,116 +73,24 @@ if (isset($_POST['code']) && $_POST['code'] != "") {
     <link rel="shortcut icon" href="/Images/logo.ico" type="image/x-icon" />
     <link rel="stylesheet" href="/CSS/template2.css" />
     <link rel="stylesheet" href="/CSS/normalize.css" />
+    <link rel="stylesheet" href="/CSS/store.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
     <!--stylesheet for icons in footer -->
-    <style>
-        /* store css-Start*/
-
-        .section-p1 {
-            padding: 1px 100px 20px 100px;
-            text-align: justify;
-        }
-
-        .section-p1 .pro-container {
-            display: flex;
-            justify-content: space-between;
-            padding-top: 20px;
-            flex-wrap: wrap;
-            flex: 50%;
-        }
-
-        .section-p1 .pro {
-            width: 15%;
-            padding: 10px 10px;
-            border: 12px solid #ddd;
-            border-radius: 25px;
-            cursor: pointer;
-            box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.2);
-            margin: 15px 0;
-            transition: 0.2s ease;
-        }
-
-        .section-p1 .pro:hover {
-            box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.6);
-        }
-
-        .section-p1 .pro .des {
-            text-align: start;
-            padding: 10px 0;
-            line-height: 0.01em;
-            text-align: center;
-        }
-
-        .section-p1 .pro .des span {
-            color: #404040;
-            font-size: 15px;
-            line-height: 0.01em;
-            text-align: center;
-        }
-
-        .section-p1 .pro img {
-            width: 100%;
-            border-radius: 20px;
-        }
-
-        .section-p1 .pro .des h5 {
-            padding-top: 2px;
-            color: #25262e;
-            font-size: 14px;
-            line-height: 0.1em;
-            text-align: center;
-        }
-
-        .section-p1 .pro .des h4 {
-            padding-top: 2px;
-            font-size: 15px;
-            font-weight: 700;
-            color: darkgreen;
-            line-height: 0.01em;
-            text-align: center;
-        }
-
-        .section-p1 .pro .des p {
-            text-align: center;
-        }
-
-        .section-p1 .button {
-            border: none;
-            color: white;
-            padding: 12px 25px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 4px 2px;
-            cursor: pointer;
-            line-height: 0.01em;
-            border-radius: 25px;
-            background-color: cadetblue;
-        }
-
-        .section-p1 .button:hover {
-            background-color: black;
-            transition: 0.3s;
-        }
-
-        /* store css-End*/
-    </style>
-    <script src="home.js"></script>
+    <script src="/JS/home.js"></script>
 </head>
 
 <body>
     <div class="header">
         <a href="#" onclick="home();" class="logo"><i class="far fa-eye"></i> HealthMart</a>
         <div class="header-right">
-            <div><?php
-                    if (isset($_SESSION['user_id'])) {
-                        echo "<a onclick=\"myacc();\"><i class=\"far fa-user-circle\"> </i>&nbsp;&nbsp;&nbsp;";
-                        echo $_SESSION['name'] . "</a>";
-                    } else {
-                        echo "<a onclick=\"register();\"><i class=\"far fa-user-circle\"></i> Sign in</a>";
-                    }
-                    ?></div>
+            <?php
+            if (isset($_SESSION['user_id'])) {
+                echo "<a onclick=\"myacc();\"><i class=\"far fa-user-circle\"> </i>&nbsp;&nbsp;&nbsp;";
+                echo $_SESSION['name'] . "</a>";
+            } else {
+                echo "<a onclick=\"register();\"><i class=\"far fa-user-circle\"></i> Sign in</a>";
+            }
+            ?>
             <?php
             if (!empty($_SESSION["shopping_cart"])) {
                 $cart_count = count(array_keys($_SESSION["shopping_cart"]));
@@ -173,27 +99,35 @@ if (isset($_POST['code']) && $_POST['code'] != "") {
             <?php
             }
             ?>
-
         </div>
     </div>
     <div class="menu">
-        <a class="active" href="#" onclick="home();"><i class="fa fa-fw fa-home"></i> Home</a>
-        <a href="#" onclick="medicine();">Medicines</a>
-        <a href="#" onclick="medicalDevices();">Medical Devices</a>
-        <a href="#" onclick="traditionalRemedies();">Traditional Remedies</a>
-        <a href="#" onclick="aboutUs();">About us</a>
+        <div class="menu-links">
+            <a class="active" href="#" onclick="home();"><i class="fa fa-fw fa-home"></i> Home</a>
+            <a href="#" onclick="medicine();">Medicines</a>
+            <a href="#" onclick="medicalDevices();">Medical Devices</a>
+            <a href="#" onclick="traditionalRemedies();">Traditional Remedies</a>
+            <a href="#" onclick="aboutUs();">About us</a>
+        </div>
         <div class="search-container">
-            <form action="/action_page.php">
+            <form action="medicine.php" method="GET">
                 <input type="text" placeholder="Search.." name="search" />
                 <button type="submit">Submit</button>
             </form>
+            <div class="dropdown-content" id="drop">
+                <?php
+                if ($items) {
+                    echo $itemList;
+                }
+                ?>
+            </div>
         </div>
     </div>
     <br>
     <h2>
         <t>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;Medicines
     </h2>
-    <div>
+    <div class="status" id="status1">
         <?php echo $status; ?>
     </div>
     <section id="product1" class="section-p1">

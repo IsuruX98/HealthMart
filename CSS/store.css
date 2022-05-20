@@ -1,0 +1,99 @@
+/* store css-Start*/
+
+.section-p1 {
+  padding: 1px 100px 20px 100px;
+  text-align: justify;
+}
+
+.section-p1 .pro-container {
+  display: flex;
+  gap: 30px;
+  padding-top: 20px;
+  flex-wrap: wrap;
+  flex: 50%;
+  justify-content: space-evenly;
+}
+
+.section-p1 .pro {
+  width: 20%;
+  padding: 10px 10px;
+  border: 12px solid #ddd;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.2);
+  margin: 15px 0;
+  transition: 0.2s ease;
+}
+
+.section-p1 .pro:hover {
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.6);
+}
+
+.section-p1 .pro .des {
+  text-align: start;
+  padding: 10px 0;
+  line-height: 0.01em;
+  text-align: center;
+}
+
+.section-p1 .pro .des span {
+  color: #404040;
+  font-size: 15px;
+  line-height: 0.01em;
+  text-align: center;
+}
+
+.section-p1 .pro img {
+  width: 100%;
+  border-radius: 20px;
+}
+
+.section-p1 .pro .des h5 {
+  padding-top: 2px;
+  color: #25262e;
+  font-size: 14px;
+  line-height: 0.1em;
+  text-align: center;
+}
+
+.section-p1 .pro .des h4 {
+  padding-top: 2px;
+  font-size: 15px;
+  font-weight: 700;
+  color: darkgreen;
+  line-height: 0.01em;
+  text-align: center;
+}
+
+.section-p1 .pro .des p {
+  text-align: center;
+}
+
+.section-p1 .button {
+  border: none;
+  color: white;
+  padding: 12px 25px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  line-height: 0.01em;
+  border-radius: 25px;
+  background-color: cadetblue;
+}
+
+.section-p1 .button:hover {
+  background-color: black;
+  transition: 0.3s;
+}
+.status {
+  text-align: center;
+  font-weight: bolder;
+}
+.red {
+  color: red;
+}
+
+/* store css-End*/

@@ -1,0 +1,53 @@
+.addNewItemPage {
+  padding: 50px;
+}
+
+.addNewItemPage hr {
+  border: 1px solid #f1f1f1;
+  margin-bottom: 25px;
+}
+
+.addNewItemPage form {
+  border: 3px solid #f1f1f1;
+  padding: 25px;
+}
+
+.addNewItemPage input[type="text"] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.addNewItemPage-container button {
+  background-color: #25262e;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+}
+
+.addNewItemPage-container button:hover {
+  background-color: #2196f3;
+  color: black;
+  transition: 0.3s;
+}
+
+.cancelbtn-container .cancelbtn {
+  width: 100%;
+  padding: 10px 18px;
+  background-color: #f44336;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  color: white;
+}
+
+.cancelbtn-container button:hover {
+  color: black;
+  transition: 0.3s;
+}

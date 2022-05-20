@@ -8,6 +8,25 @@ if (!isset($_SESSION['user_id'])) {
   header('location: loginForm.php');
 }
 ?>
+<?php
+$itemList = '';
+$items = '';
+$errors = array();
+//check if there is a search term
+if (isset($_GET['search'])) {
+  $search = mysqli_real_escape_string($conn, $_GET['search']);
+  $query = "SELECT * FROM item WHERE (genericName LIKE '%{$search}%' OR brandName LIKE '%{$search}%') AND isDeleted = 0 ORDER BY genericName";
+
+  $items = mysqli_query($conn, $query);
+  if ($items) {
+    while ($item = mysqli_fetch_assoc($items)) {
+      $itemList .= "<a href=\"searchedItem.php?item_ID={$item['itemID']}\">{$item['genericName']} / {$item['brandName']}</a>";
+    }
+  } else {
+    $errors[] = 'Database query failed.';
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,175 +38,25 @@ if (!isset($_SESSION['user_id'])) {
   <link rel="shortcut icon" href="/Images/logo.ico" type="image/x-icon" />
   <link rel="stylesheet" href="/CSS/template2.css" />
   <link rel="stylesheet" href="/CSS/normalize.css" />
+  <link rel="stylesheet" href="/CSS/myaccnew.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
   <!--stylesheet for icons in footer -->
-  <style>
-    .ymyacc {
-      padding: 3%;
-      margin-left: 5%;
-      margin-right: 5%;
-      display: flex;
-      flex-direction: row;
-    }
-
-    .ymyaccleft {
-      padding: 20px;
-      flex: 50%;
-    }
-
-    .ymyaccright {
-      flex: 50%;
-      display: flex;
-      justify-content: center;
-    }
-
-    .ymyaccright img {
-      width: 100%;
-      margin: auto;
-    }
-
-    .y-edit {
-      background-color: #25262e;
-      color: white;
-      padding: 0px;
-      margin: 8px 0;
-      border: none;
-      cursor: pointer;
-      width: 70px;
-      height: 30px;
-      font-size: small;
-      text-align: center;
-    }
-
-    .y-edit:hover {
-      background-color: #2196f3;
-      color: black;
-      transition: 0.3s;
-    }
-
-    .y-changepw {
-      background-color: #25262e;
-      color: white;
-      padding: 0px;
-      margin: 8px 0;
-      border: none;
-      cursor: pointer;
-      width: 140px;
-      height: 30px;
-      font-size: small;
-      text-align: center;
-    }
-
-    .y-changepw:hover {
-      background-color: #2196f3;
-      color: black;
-      transition: 0.3s;
-    }
-
-    .myacc-logoutbtn {
-      background-color: #f44336;
-      border: none;
-      padding: 0px;
-      margin: 8px 0;
-      color: white;
-      cursor: pointer;
-      width: 70px;
-      height: 30px;
-      font-size: small;
-      text-align: center;
-    }
-
-    .myacc-logoutbtn:hover {
-      background-color: #ce1f13;
-      color: white;
-      transition: 0.3s;
-    }
-
-    .myacc-logoutbtn a {
-      text-decoration: none;
-      color: white;
-    }
-
-    .myacc-logoutbtn a:visited {
-      color: white;
-    }
-
-    .myacc-editbtn {
-      background-color: #f44336;
-      border: none;
-      padding: 0px;
-      margin: 8px 0;
-      color: white;
-      cursor: pointer;
-      width: 150px;
-      height: 30px;
-      font-size: small;
-      text-align: center;
-    }
-
-    .myacc-editbtn:hover {
-      background-color: #ce1f13;
-      color: white;
-      transition: 0.3s;
-    }
-
-    .myacc-editbtn a {
-      text-decoration: none;
-      color: white;
-    }
-
-    .myacc-editbtn a:visited {
-      color: white;
-    }
-
-    .myacc-changepwbtn {
-      background-color: #f44336;
-      border: none;
-      padding: 0px;
-      margin: 8px 0;
-      color: white;
-      cursor: pointer;
-      width: 120px;
-      height: 30px;
-      font-size: small;
-      text-align: center;
-    }
-
-    .myacc-changepwbtn:hover {
-      background-color: #ce1f13;
-      color: white;
-      transition: 0.3s;
-    }
-
-    .myacc-changepwbtn a {
-      text-decoration: none;
-      color: white;
-    }
-
-    .myacc-changepwbtn a:visited {
-      color: white;
-    }
-
-    .myacc-btnbox {
-      display: flex;
-      flex-direction: column;
-    }
-  </style>
-  <script src="home.js"></script>
+  <script src="/JS/home.js"></script>
+  <script src="/JS/cancel.js"></script>
 </head>
 
 <body>
   <div class="header">
     <a href="#" onclick="home();" class="logo"><i class="far fa-eye"></i> HealthMart</a>
     <div class="header-right">
-      <div><?php
-            if (isset($_SESSION['user_id'])) {
-              echo "<a onclick=\"myacc();\"><i class=\"far fa-user-circle\"> </i>&nbsp;&nbsp;&nbsp;";
-              echo $_SESSION['name'] . "</a>";
-            } else {
-              echo "<a onclick=\"register();\"><i class=\"far fa-user-circle\"></i> Sign in</a>";
-            }
-            ?></div>
+      <?php
+      if (isset($_SESSION['user_id'])) {
+        echo "<a onclick=\"myacc();\"><i class=\"far fa-user-circle\"> </i>&nbsp;&nbsp;&nbsp;";
+        echo $_SESSION['name'] . "</a>";
+      } else {
+        echo "<a onclick=\"register();\"><i class=\"far fa-user-circle\"></i> Sign in</a>";
+      }
+      ?>
       <?php
       if (!empty($_SESSION["shopping_cart"])) {
         $cart_count = count(array_keys($_SESSION["shopping_cart"]));
@@ -196,20 +65,28 @@ if (!isset($_SESSION['user_id'])) {
       <?php
       }
       ?>
-
     </div>
   </div>
   <div class="menu">
-    <a class="active" href="#" onclick="home();"><i class="fa fa-fw fa-home"></i> Home</a>
-    <a href="#" onclick="medicine();">Medicines</a>
-    <a href="#" onclick="medicalDevices();">Medical Devices</a>
-    <a href="#" onclick="traditionalRemedies();">Traditional Remedies</a>
-    <a href="#" onclick="aboutUs();">About us</a>
+    <div class="menu-links">
+      <a class="active" href="#" onclick="home();"><i class="fa fa-fw fa-home"></i> Home</a>
+      <a href="#" onclick="medicine();">Medicines</a>
+      <a href="#" onclick="medicalDevices();">Medical Devices</a>
+      <a href="#" onclick="traditionalRemedies();">Traditional Remedies</a>
+      <a href="#" onclick="aboutUs();">About us</a>
+    </div>
     <div class="search-container">
-      <form action="/action_page.php">
+      <form action="myaccnew.php" method="GET">
         <input type="text" placeholder="Search.." name="search" />
         <button type="submit">Submit</button>
       </form>
+      <div class="dropdown-content" id="drop">
+        <?php
+        if ($items) {
+          echo $itemList;
+        }
+        ?>
+      </div>
     </div>
   </div>
   <!--MY Account-->

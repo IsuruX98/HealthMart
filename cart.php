@@ -9,6 +9,25 @@ if (!isset($_SESSION['user_id'])) {
 }
 ?>
 <?php
+$itemList = '';
+$items = '';
+$errors = array();
+//check if there is a search term
+if (isset($_GET['search'])) {
+  $search = mysqli_real_escape_string($conn, $_GET['search']);
+  $query = "SELECT * FROM item WHERE (genericName LIKE '%{$search}%' OR brandName LIKE '%{$search}%') AND isDeleted = 0 ORDER BY genericName";
+
+  $items = mysqli_query($conn, $query);
+  if ($items) {
+    while ($item = mysqli_fetch_assoc($items)) {
+      $itemList .= "<a href=\"searchedItem.php?item_ID={$item['itemID']}\">{$item['genericName']} / {$item['brandName']}</a>";
+    }
+  } else {
+    $errors[] = 'Database query failed.';
+  }
+}
+?>
+<?php
 //include database connection
 require_once 'conn.php'; ?>
 <?php
@@ -72,134 +91,25 @@ if (isset($_POST['submit'])) {
   <link rel="shortcut icon" href="/Images/logo.ico" type="image/x-icon" />
   <link rel="stylesheet" href="/CSS/template2.css" />
   <link rel="stylesheet" href="/CSS/normalize.css" />
+  <link rel="stylesheet" href="/CSS/cart.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
   <!--stylesheet for icons in footer -->
-  <style>
-    /* Cart css-Start*/
-    .cart {
-      padding: 5%;
-    }
-
-    .ysubmit {
-      background-color: #25262e;
-      color: white;
-      padding: 14px 20px;
-      margin: 8px 0;
-      border: none;
-      cursor: pointer;
-      width: 100%;
-    }
-
-    .ysubmit1 {
-      background-color: #f44336;
-      color: white;
-      padding: 14px 20px;
-      margin: 8px 0;
-      border: none;
-      cursor: pointer;
-      width: 100%;
-    }
-
-    .ysubmit:hover {
-      background-color: #2196f3;
-      color: black;
-      transition: 0.3s;
-      border-color: #2196f3;
-    }
-
-    .y-payment {
-      display: flex;
-    }
-
-    .y-payment img {
-      margin-top: 12px;
-      margin-left: 10px;
-    }
-
-    .message_box .box {
-      margin: 10px 0px;
-      border: 1px solid #2b772e;
-      text-align: center;
-      font-weight: bold;
-      color: #2b772e;
-    }
-
-    .cart table {
-      width: 100%;
-      border-collapse: collapse;
-    }
-
-    .cart th,
-    .cart td {
-      border-bottom: #aaa 1px solid;
-      padding: 15px;
-    }
-
-    .cart tr {
-      text-align: center;
-    }
-
-    .cart .remove {
-      background: none;
-      border: none;
-      color: black;
-      cursor: pointer;
-      padding: 8px;
-      background: dodgerblue;
-    }
-
-    .cart .remove:hover {
-      text-decoration: none;
-      background-color: #25262e;
-      color: white;
-    }
-
-    .emptyCart {
-      color: #f44336;
-      text-align: center;
-    }
-
-    .presup-ytxtarea {
-      width: 100%;
-    }
-
-    .ysubmit1 a {
-      text-decoration: none;
-    }
-
-    .ysubmit1 a:visited {
-      color: white;
-    }
-
-    .emptyctimg {
-      width: 40%;
-      margin: auto;
-    }
-
-    @media screen and (max-width: 800px) {
-      .cart {
-        width: 100%;
-      }
-    }
-
-    /* store css-End*/
-  </style>
-  <script src="home.js"></script>
-  <script src="cart.js"></script>
+  <script src="/JS/home.js"></script>
+  <script src="/JS/cart.js"></script>
 </head>
 
 <body>
   <div class="header">
     <a href="#" onclick="home();" class="logo"><i class="far fa-eye"></i> HealthMart</a>
     <div class="header-right">
-      <div><?php
-            if (isset($_SESSION['user_id'])) {
-              echo "<a onclick=\"myacc();\"><i class=\"far fa-user-circle\"> </i>&nbsp;&nbsp;&nbsp;";
-              echo $_SESSION['name'] . "</a>";
-            } else {
-              echo "<a onclick=\"register();\"><i class=\"far fa-user-circle\"></i> Sign in</a>";
-            }
-            ?></div>
+      <?php
+      if (isset($_SESSION['user_id'])) {
+        echo "<a onclick=\"myacc();\"><i class=\"far fa-user-circle\"> </i>&nbsp;&nbsp;&nbsp;";
+        echo $_SESSION['name'] . "</a>";
+      } else {
+        echo "<a onclick=\"register();\"><i class=\"far fa-user-circle\"></i> Sign in</a>";
+      }
+      ?>
       <?php
       if (!empty($_SESSION["shopping_cart"])) {
         $cart_count = count(array_keys($_SESSION["shopping_cart"]));
@@ -208,20 +118,28 @@ if (isset($_POST['submit'])) {
       <?php
       }
       ?>
-
     </div>
   </div>
   <div class="menu">
-    <a class="active" href="#" onclick="home();"><i class="fa fa-fw fa-home"></i> Home</a>
-    <a href="#" onclick="medicine();">Medicines</a>
-    <a href="#" onclick="medicalDevices();">Medical Devices</a>
-    <a href="#" onclick="traditionalRemedies();">Traditional Remedies</a>
-    <a href="#" onclick="aboutUs();">About us</a>
+    <div class="menu-links">
+      <a class="active" href="#" onclick="home();"><i class="fa fa-fw fa-home"></i> Home</a>
+      <a href="#" onclick="medicine();">Medicines</a>
+      <a href="#" onclick="medicalDevices();">Medical Devices</a>
+      <a href="#" onclick="traditionalRemedies();">Traditional Remedies</a>
+      <a href="#" onclick="aboutUs();">About us</a>
+    </div>
     <div class="search-container">
-      <form action="/action_page.php">
+      <form action="cart.php" method="GET">
         <input type="text" placeholder="Search.." name="search" />
         <button type="submit">Submit</button>
       </form>
+      <div class="dropdown-content" id="drop">
+        <?php
+        if ($items) {
+          echo $itemList;
+        }
+        ?>
+      </div>
     </div>
   </div>
   <!--Cart-->
@@ -274,7 +192,7 @@ if (isset($_POST['submit'])) {
                   <form method='post' action=''>
                     <input type='hidden' name='code' value="<?php echo $product["code"]; ?>" />
                     <input type='hidden' name='action' value="remove" />
-                    <button type='submit' class='remove'>Remove Item</button>
+                    <button type='submit' class='remove' onclick="return confirm('Are you sure you want to remove this item from your cart?');">Remove Item</button>
                   </form>
                 </td>
               </tr>
@@ -323,7 +241,7 @@ if (isset($_POST['submit'])) {
           <textarea class="presup-ytxtarea" name="newAddress" rows="5" cols="100" placeholder="Enter your new address here..."></textarea>
           <br /><br />
 
-          <input type="submit" value="Proceed to Check out" class="ysubmit" name="submit" />
+          <input type="submit" value="Proceed to Check out" class="ysubmit" name="submit" onclick="return confirm('Are you sure you want proceed to check out?');" />
 
           <button class="ysubmit1"><a href="medicine.php">Continue Shopping >></a> </button>
 
