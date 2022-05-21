@@ -114,15 +114,15 @@ if (isset($_POST['csubmit'])) {
                 <h2>Contact Us</h2>
                 <form action="contactus.php" method="POST" onsubmit="contactus();">
                     <label for="Name"><b>Name</b></label>
-                    <input type="text" name="name"/>
+                    <input type="text" name="name" required/>
                     <label for="Email"><b>Email</b></label>
-                    <input type="text" name="email"/>
+                    <input type="email" name="email" required/>
                     <label for="Mobilenumber"><b>Mobile number</b></label>
                     <input type="text" name="mobileNo"/>
                     <p>
                         <label for="Whatisonyourmind">What is on your mind....</label>
                     </p>
-                    <textarea id="userIdeas" name="userIdeas" rows="8" cols="50"></textarea>
+                    <textarea id="userIdeas" name="userIdeas" rows="8" cols="50" required></textarea>
                     <br/>
                     <button type="submit" name="csubmit">Submit</button>
                 </form>
