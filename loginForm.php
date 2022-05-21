@@ -13,10 +13,12 @@ if (isset($_GET['search'])) {
 
     $items = mysqli_query($conn, $query);
     if ($items) {
+        //loop through the database and find a match
         while ($item = mysqli_fetch_assoc($items)) {
             $itemList .= "<a href=\"searchedItem.php?item_ID={$item['itemID']}\">{$item['genericName']} / {$item['brandName']}</a>";
         }
     } else {
+        //if there is an error
         $errors[] = 'Database query failed.';
     }
 }
@@ -52,7 +54,7 @@ if (isset($_POST['submit'])) {
             $row = mysqli_fetch_array($result_set);
 
             if ($row['hmRole'] == 'User') {
-
+                //saving user data into session variables
                 $_SESSION['user_id'] = $row['hmUID'];
                 $_SESSION['name'] = $row['uName'];
                 $_SESSION['email'] = $row['eMailAddress'];
@@ -62,7 +64,7 @@ if (isset($_POST['submit'])) {
 
                 header('location: home.php');
             } else if ($row['hmRole'] == 'Admin') {
-
+                //saving Admin data into session variables
                 $_SESSION['user_id'] = $row['hmUID'];
                 $_SESSION['name'] = $row['uName'];
                 $_SESSION['email'] = $row['eMailAddress'];
@@ -78,42 +80,45 @@ if (isset($_POST['submit'])) {
 }
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>healthmart.com</title>
-    <link rel="shortcut icon" href="/Images/logo.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="/CSS/template2.css" />
-    <link rel="stylesheet" href="/CSS/normalize.css" />
-    <link rel="stylesheet" href="/CSS/loginForm.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
-    <!--stylesheet for icons in footer -->
-    <script src="/JS/home.js"></script>
-    <script src="/JS/cancel.js"></script>
-</head>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>healthmart.com</title>
+        <link rel="shortcut icon" href="/Images/logo.ico" type="image/x-icon"/>
+        <link rel="stylesheet" href="/CSS/template2.css"/>
+        <link rel="stylesheet" href="/CSS/normalize.css"/>
+        <link rel="stylesheet" href="/CSS/loginForm.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"/>
+        <!--stylesheet for icons in footer -->
+        <script src="/JS/home.js"></script>
+        <script src="/JS/cancel.js"></script>
+    </head>
 
-<body>
+    <body>
     <div class="header">
         <a href="#" onclick="home();" class="logo"><i class="far fa-eye"></i> HealthMart</a>
         <div class="header-right">
             <?php
+            //if there is a user display username
             if (isset($_SESSION['user_id'])) {
                 echo "<a onclick=\"myacc();\"><i class=\"far fa-user-circle\"> </i>&nbsp;&nbsp;&nbsp;";
                 echo $_SESSION['name'] . "</a>";
             } else {
+                //if the user is not a registered user display a register button
                 echo "<a onclick=\"register();\"><i class=\"far fa-user-circle\"></i> Sign in</a>";
             }
             ?>
             <?php
+            //display the shopping cart button if there is at least one item added to cart
             if (!empty($_SESSION["shopping_cart"])) {
                 $cart_count = count(array_keys($_SESSION["shopping_cart"]));
-            ?>
+                ?>
                 <a href="cart.php"><i class="fa fa-shopping-cart"></i> : <?php echo $cart_count; ?></a>
-            <?php
+                <?php
             }
             ?>
         </div>
@@ -126,9 +131,10 @@ if (isset($_POST['submit'])) {
             <a href="#" onclick="traditionalRemedies();">Traditional Remedies</a>
             <a href="#" onclick="aboutUs();">About us</a>
         </div>
+        <!--showing the results of search-->
         <div class="search-container">
             <form action="loginForm.php" method="GET">
-                <input type="text" placeholder="Search.." name="search" />
+                <input type="text" placeholder="Search.." name="search"/>
                 <button type="submit">Submit</button>
             </form>
             <div class="dropdown-content" id="drop">
@@ -148,19 +154,20 @@ if (isset($_POST['submit'])) {
                     <div class="login-container">
                         <h1>Login</h1>
                         <p>Alredy a member please login</p>
-                        <hr />
+                        <hr/>
                         <?php
                         if (isset($errors) && !empty($errors)) {
                             echo '<p class="error">Invalid Username or password</p>';
                         }
                         ?>
                         <label for="uname"><b>Username</b></label>
-                        <input type="text" placeholder="Enter Username" name="uname" required />
+                        <input type="text" placeholder="Enter Username" name="uname" required/>
 
                         <label for="psw"><b>Password</b></label>
-                        <input type="password" placeholder="Enter Password" name="psw" required />
+                        <input type="password" placeholder="Enter Password" name="psw" required/>
 
-                        <div class="not-member"><a href="#" onclick="notAmember();">Not a member : register here</a></div>
+                        <div class="not-member"><a href="#" onclick="notAmember();">Not a member : register here</a>
+                        </div>
                         <button type="submit" name="submit">Login</button>
                     </div>
 
@@ -209,7 +216,7 @@ if (isset($_POST['submit'])) {
             <div class="column subscribe">
                 <h3>Newsletter</h3>
                 <div class="footersearch">
-                    <input type="email" placeholder="Your email id here" />
+                    <input type="email" placeholder="Your email id here"/>
                     <button>Subscribe</button>
                 </div>
             </div>
@@ -219,9 +226,9 @@ if (isset($_POST['submit'])) {
         </div>
     </footer>
 
-</body>
+    </body>
 
-</html>
+    </html>
 <?php
 //close connection to database
 mysqli_close($conn);

@@ -2,1340 +2,1360 @@
 @import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap");
 
 .content {
-  width: 100%;
-  height: 100%;
-  object-fit: fill;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
 }
 
 /*----------Header CSS starts from here----------*/
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 body {
-  margin: 0;
-  font-family: "Source Sans Pro", sans-serif;
+    margin: 0;
+    font-family: "Source Sans Pro", sans-serif;
 }
 
 .header {
-  overflow: hidden;
-  background-color: #212121;
-  padding: 30px 20px;
+    overflow: hidden;
+    background-color: #212121;
+    padding: 30px 20px;
 }
 
 .header a {
-  float: left;
-  color: white;
-  text-align: center;
-  padding: 15px;
-  text-decoration: none;
-  font-size: 15px;
-  line-height: 20px;
+    float: left;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    text-decoration: none;
+    font-size: 15px;
+    line-height: 20px;
 }
 
 .header a.logo {
-  font-size: 25px;
-  font-weight: bold;
-  font-size: 50px;
+    font-size: 25px;
+    font-weight: bold;
+    font-size: 50px;
 }
 
 .header a.logo:hover {
-  color: dodgerblue;
-  transition: 0.3s;
+    color: dodgerblue;
+    transition: 0.3s;
 }
 
 .header-right a:hover {
-  background-color: #ddd;
-  color: black;
+    background-color: #ddd;
+    color: black;
 }
 
 .header a.active {
-  background-color: dodgerblue;
-  color: white;
+    background-color: dodgerblue;
+    color: white;
 }
 
 .header-right {
-  float: right;
-  padding-top: 17px;
+    float: right;
+    padding-top: 17px;
 }
 
 /*----------Header CSS End from here*----------/
 /*----------Nav bar and search CSS starts here----------*/
 .menu {
-  overflow: hidden;
-  background-color: #404040;
-  position: fixed;
-  position: sticky;
-  top: 0;
-  z-index: 9999;
+    overflow: hidden;
+    background-color: #404040;
+    position: fixed;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
 }
 
 .menu a {
-  float: left;
-  display: block;
-  color: white;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size: 17px;
+    float: left;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
 }
 
 .menu a:hover {
-  background-color: #ddd;
-  color: black;
-  transition: 0.3s;
+    background-color: #ddd;
+    color: black;
+    transition: 0.3s;
 }
 
 .menu a.active {
-  background-color: #2196f3;
-  color: white;
+    background-color: #2196f3;
+    color: white;
 }
 
 .menu .search-container {
-  float: right;
+    float: right;
 }
 
 .menu input[type="text"] {
-  padding: 6px;
-  margin-top: 8px;
-  font-size: 17px;
-  border: none;
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
 }
 
 .menu .search-container button {
-  float: right;
-  padding: 6px 10px;
-  margin-top: 8px;
-  margin-right: 16px;
-  background: #212121;
-  font-size: 17px;
-  border: none;
-  cursor: pointer;
-  color: white;
+    float: right;
+    padding: 6px 10px;
+    margin-top: 8px;
+    margin-right: 16px;
+    background: #212121;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+    color: white;
 }
 
 .menu .search-container button:hover {
-  background: #2196f3;
-  transition: 0.3s;
+    background: #2196f3;
+    transition: 0.3s;
 }
 
 /*----------Nav bar and search End starts here----------*/
 /*----------footer CSS starts from here----------*/
 footer {
-  background-color: #212121;
-  color: #a7a7a7;
-  font-size: 16px;
-  padding-top: 20px;
+    background-color: #212121;
+    color: #a7a7a7;
+    font-size: 16px;
+    padding-top: 20px;
 }
 
 footer * {
-  font-family: Arial, Helvetica, sans-serif;
-  box-sizing: border-box;
-  border: none;
-  outline: none;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
 }
 
 .row {
-  padding: 1em 1em;
+    padding: 1em 1em;
 }
 
 .row.primary {
-  display: grid;
-  grid-template-columns: 3fr 2fr 2fr;
-  align-items: stretch;
+    display: grid;
+    grid-template-columns: 3fr 2fr 2fr;
+    align-items: stretch;
 }
 
 .column {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  padding: 0 2em;
-  min-height: 15em;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0 2em;
+    min-height: 15em;
 }
 
 footer h3 {
-  width: 100%;
-  text-align: left;
-  color: white;
-  font-size: 1.4em;
-  white-space: nowrap;
+    width: 100%;
+    text-align: left;
+    color: white;
+    font-size: 1.4em;
+    white-space: nowrap;
 }
 
 footer ul {
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  padding: 0;
-  margin: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
 }
 
 footer li:not(:first-child) {
-  margin-top: 0.8em;
+    margin-top: 0.8em;
 }
 
 footer ul li a {
-  color: #a7a7a7;
-  text-decoration: none;
+    color: #a7a7a7;
+    text-decoration: none;
 }
 
 footer ul li a:hover {
-  color: #2a8ded;
+    color: #2a8ded;
 }
 
 .about p {
-  text-align: justify;
-  line-height: 2;
-  margin: 0;
+    text-align: justify;
+    line-height: 2;
+    margin: 0;
 }
 
 .footersearch input,
 .footersearch button {
-  font-size: 1em;
-  padding: 1em;
-  width: 100%;
-  border-radius: 5px;
-  margin-bottom: 5px;
+    font-size: 1em;
+    padding: 1em;
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 5px;
 }
 
 .footersearch button {
-  background-color: #bac6d9;
-  color: black;
+    background-color: #bac6d9;
+    color: black;
 }
 
 .footersearch button:hover {
-  background-color: #2196f3;
-  transition: 0.3s;
-  color: white;
+    background-color: #2196f3;
+    transition: 0.3s;
+    color: white;
 }
 
 div.social {
-  display: flex;
-  justify-content: space-around;
-  font-size: 2.4em;
-  flex-direction: row;
-  margin-top: 0.5em;
+    display: flex;
+    justify-content: space-around;
+    font-size: 2.4em;
+    flex-direction: row;
+    margin-top: 0.5em;
 }
 
 .social i {
-  color: #bac6d9;
+    color: #bac6d9;
 }
 
 .social #i1:hover {
-  color: #1078f1;
+    color: #1078f1;
 }
 
 .social #i2:hover {
-  color: #d80e9a;
+    color: #d80e9a;
 }
 
 .social #i3:hover {
-  color: #229af1;
+    color: #229af1;
 }
 
 .social #i4:hover {
-  color: #ff0101;
+    color: #ff0101;
 }
 
 .social #i5:hover {
-  color: #51f16d;
+    color: #51f16d;
 }
 
 .copyright {
-  padding: 0.3em 1em;
-  background-color: #25262e;
+    padding: 0.3em 1em;
+    background-color: #25262e;
 }
 
 .copyright p {
-  font-size: 0.9em;
-  text-align: right;
+    font-size: 0.9em;
+    text-align: right;
 }
 
 /*----------footer CSS End from here*----------/
 /*----------Slider1 CSS part starts here----------*/
 
 #slider1 {
-  overflow: hidden;
+    overflow: hidden;
 }
 
 #slider1 figure {
-  position: relative;
-  width: 500%;
-  margin: 0;
-  left: 0;
-  animation: 15s slider1 infinite;
+    position: relative;
+    width: 500%;
+    margin: 0;
+    left: 0;
+    animation: 15s slider1 infinite;
 }
 
 #slider1 figure img {
-  width: 20%;
-  float: left;
+    width: 20%;
+    float: left;
 }
 
 @keyframes slider1 {
-  0% {
-    left: 0%;
-  }
+    0% {
+        left: 0%;
+    }
 
-  16.66% {
-    left: 0%;
-  }
+    16.66% {
+        left: 0%;
+    }
 
-  33.32% {
-    left: -100%;
-  }
+    33.32% {
+        left: -100%;
+    }
 
-  49.98% {
-    left: -100%;
-  }
+    49.98% {
+        left: -100%;
+    }
 
-  66.64% {
-    left: -200%;
-  }
+    66.64% {
+        left: -200%;
+    }
 
-  83.30% {
-    left: -200%;
-  }
+    83.30% {
+        left: -200%;
+    }
 
-  100% {
-    left: 0%;
-  }
+    100% {
+        left: 0%;
+    }
 }
 
 /*----------Slider1 CSS part End here----------*/
 /*----------Icon image CSS part starts here----------*/
 .iconimage img {
-  width: 100%;
-  height: 100%;
-  object-fit: fill;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
 }
 
 /*----------Icon image CSS End ends here----------*/
 /*----------Flexbox is divided into three parts for prescription upload, explore the store, and slider two starting from here.----------*/
 .flex-container {
-  display: flex;
-  flex-direction: row;
-  font-size: 30px;
-  text-align: center;
+    display: flex;
+    flex-direction: row;
+    font-size: 30px;
+    text-align: center;
 }
 
 .flex-item-left1 {
-  padding: 20px;
-  flex: 50%;
+    padding: 20px;
+    flex: 50%;
 }
 
 .flex-item-middle1 {
-  padding: 20px;
-  flex: 50%;
+    padding: 20px;
+    flex: 50%;
 }
 
 .flex-item-right1 {
-  flex: 50%;
-  padding: 20px;
+    flex: 50%;
+    padding: 20px;
 }
 
 .flex-item-right1-up-down {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .flex-item-right1-up {
-  flex: 50%;
-  margin-top: -20px;
+    flex: 50%;
+    margin-top: -20px;
 }
 
 .flex-item-right1-down {
-  padding: 20px;
-  flex: 50%;
-  margin-top: -25px;
+    padding: 20px;
+    flex: 50%;
+    margin-top: -25px;
 }
 
 .flex-item-left1 .container {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .flex-item-left1 a {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 .flex-item-left1 a:visited {
-  color: inherit;
+    color: inherit;
 }
 
 .flex-item-middle1 .container {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .container {
-  position: relative;
-  width: 100%;
-  max-width: 400px;
+    position: relative;
+    width: 100%;
+    max-width: 400px;
 }
 
 .container img {
-  width: 100%;
-  height: auto;
+    width: 100%;
+    height: auto;
 }
 
 .container .btn {
-  position: absolute;
-  top: 75%;
-  left: 75%;
-  transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
-  color: black;
-  font-size: 16px;
-  padding: 12px 24px;
-  border: none;
-  cursor: pointer;
-  border-radius: 5px;
-  text-align: center;
-  background: #ddd;
-  font-size: 17px;
-  width: 150px;
+    position: absolute;
+    top: 75%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    color: black;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    background: #ddd;
+    font-size: 17px;
+    width: 150px;
 }
 
 .container .btn:hover {
-  background: black;
-  color: white;
-  transition: 0.3s;
+    background: black;
+    color: white;
+    transition: 0.3s;
 }
 
 /*----------Slider2 CSS part Starts here----------*/
 #slider2 {
-  overflow: hidden;
-  padding: 20px;
-  flex: 50%;
+    overflow: hidden;
+    padding: 20px;
+    flex: 50%;
 }
 
 #slider2 figure {
-  position: relative;
-  width: 500%;
-  margin: 0;
-  left: 0;
-  animation: 35s slider2 infinite;
+    position: relative;
+    width: 500%;
+    margin: 0;
+    left: 0;
+    animation: 35s slider2 infinite;
 }
 
 #slider2 figure img {
-  width: 20%;
-  float: left;
+    width: 20%;
+    float: left;
 }
 
 @keyframes slider2 {
-  0% {
-    left: 0%;
-  }
+    0% {
+        left: 0%;
+    }
 
-  10% {
-    left: 0%;
-  }
+    10% {
+        left: 0%;
+    }
 
-  20% {
-    left: -100%;
-  }
+    20% {
+        left: -100%;
+    }
 
-  30% {
-    left: -200%;
-  }
+    30% {
+        left: -200%;
+    }
 
-  40% {
-    left: -300%;
-  }
+    40% {
+        left: -300%;
+    }
 
-  50% {
-    left: -400%;
-  }
+    50% {
+        left: -400%;
+    }
 
-  60% {
-    left: -400%;
-  }
+    60% {
+        left: -400%;
+    }
 
-  70% {
-    left: -300%;
-  }
+    70% {
+        left: -300%;
+    }
 
-  80% {
-    left: -200%;
-  }
+    80% {
+        left: -200%;
+    }
 
-  90% {
-    left: -100%;
-  }
+    90% {
+        left: -100%;
+    }
 
-  100% {
-    left: 0%;
-  }
+    100% {
+        left: 0%;
+    }
 }
 
 /*----------Slider2 CSS part End here----------*/
 /*----------Flexbox is divided into three parts for prescription upload, explore the store, and slider two ends from here.----------*/
 /*----------Sign In page CSS part Starts here----------*/
 .flex-container-loginpage {
-  display: flex;
-  flex-direction: row;
+    display: flex;
+    flex-direction: row;
 }
 
 .flex-item-left-Login {
-  padding: 20px;
-  flex: 50%;
+    padding: 20px;
+    flex: 50%;
 }
 
 .flex-item-right-SignIn {
-  padding: 20px;
-  flex: 50%;
+    padding: 20px;
+    flex: 50%;
 }
 
 .flex-item-left-Login-up-down {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .flex-item-left-Login-up {
-  padding: 20px;
-  flex: 50%;
+    padding: 20px;
+    flex: 50%;
 }
 
 .flex-item-left-Login-down {
-  flex: 50%;
+    flex: 50%;
 }
 
 .flex-item-left-Login-down img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
 }
 
 .LoginPage {
-  padding: 50px;
+    padding: 50px;
 }
 
 .LoginPage hr {
-  border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
 }
 
 .LoginPage form {
-  border: 3px solid #f1f1f1;
-  padding: 25px;
+    border: 3px solid #f1f1f1;
+    padding: 25px;
 }
 
 .LoginPage input[type="text"],
 .LoginPage input[type="password"] {
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
 }
 
 .login-container button {
-  background-color: #25262e;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
+    background-color: #25262e;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
 }
 
 .login-container button:hover {
-  background-color: #2196f3;
-  color: black;
-  transition: 0.3s;
+    background-color: #2196f3;
+    color: black;
+    transition: 0.3s;
 }
 
 .pw-container .cancelbtn {
-  width: 100%;
-  padding: 10px 18px;
-  background-color: #f44336;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  color: white;
+    width: 100%;
+    padding: 10px 18px;
+    background-color: #f44336;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    color: white;
 }
 
 .pw-container button:hover {
-  color: black;
-  transition: 0.3s;
+    color: black;
+    transition: 0.3s;
 }
 
 .login-container span.psw {
-  float: right;
-  padding-top: 10px;
-  padding-bottom: 10px;
+    float: right;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
 .Sign-Up {
-  padding: 50px;
+    padding: 50px;
 }
 
 .signup-container input[type="text"],
 .signup-container input[type="password"] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
 }
 
 .signup-container input[type="text"]:focus,
 .signup-container input[type="password"]:focus {
-  background-color: #ddd;
-  outline: none;
+    background-color: #ddd;
+    outline: none;
 }
 
 .signup-container hr {
-  border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
 }
 
 .signup-container button {
-  background-color: black;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
+    background-color: black;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
 }
 
 .signupfrom-buttons .signupbtn:hover {
-  background-color: #2196f3;
-  color: black;
-  transition: 0.3s;
+    background-color: #2196f3;
+    color: black;
+    transition: 0.3s;
 }
 
 .signupfrom-buttons .cancelbtn {
-  padding: 14px 20px;
-  background-color: #f44336;
+    padding: 14px 20px;
+    background-color: #f44336;
 }
 
 .signupfrom-buttons .cancelbtn:hover {
-  color: black;
-  transition: 0.3s;
+    color: black;
+    transition: 0.3s;
 }
 
 .signup-container {
-  padding: 16px;
-  margin: 16px;
-  margin-bottom: 50px;
+    padding: 16px;
+    margin: 16px;
+    margin-bottom: 50px;
 }
 
 /* Clear floats */
 .Sign-Up .signupfrom-buttons::after {
-  content: "";
-  clear: both;
-  display: table;
+    content: "";
+    clear: both;
+    display: table;
 }
 
 /*----------Sign In page CSS part End here----------*/
 /*----------Contact Us page CSS part Starts here----------*/
 .flex-container-contactus {
-  display: flex;
-  flex-direction: row;
+    display: flex;
+    flex-direction: row;
 }
 
 .flex-container-contactus-left {
-  flex: 50%;
-  padding: 20px;
+    flex: 50%;
+    padding: 20px;
 }
 
 .flex-container-contactus-right {
-  flex: 50%;
-  margin: auto;
+    flex: 50%;
+    margin: auto;
 }
 
 .flex-container-contactus-right-up-down {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .flex-container-contactus-right-up {
-  flex: 50%;
+    flex: 50%;
 }
 
 .flex-container-contactus-right-down {
-  flex: 50%;
+    flex: 50%;
 }
 
 .flex-container-contactus-right-down img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-  margin-top: -30px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    margin-top: -30px;
 }
 
 .flex-container-contactus-left input[type="text"] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
 }
 
 .getintouch {
-  margin: auto;
-  width: 70%;
-  margin-right: -50px;
-  margin-top: 70px;
+    margin: auto;
+    width: 70%;
+    margin-right: -50px;
+    margin-top: 70px;
 }
 
 .contactus-form {
-  padding: 30px;
+    padding: 30px;
 }
 
 .contactus-form button {
-  background-color: #25262e;
-  color: white;
-  padding: 14px 20px;
-  margin: 20px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
+    background-color: #25262e;
+    color: white;
+    padding: 14px 20px;
+    margin: 20px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
 }
 
 .contactus-form button:hover {
-  background-color: #2196f3;
-  color: black;
-  transition: 0.3s;
+    background-color: #2196f3;
+    color: black;
+    transition: 0.3s;
 }
 
 .contactus-form textarea {
-  width: 100%;
+    width: 100%;
 }
 
 /*----------Contact Us page CSS part Ends here----------*/
 .mother-left-right {
-  display: flex;
-  flex-direction: row;
+    display: flex;
+    flex-direction: row;
 }
 
 .child-left {
-  flex: 50%;
-  padding: 20px;
-  background-color: yellow;
-  text-align: center;
-  margin: 20px;
+    flex: 50%;
+    padding: 20px;
+    background-color: yellow;
+    text-align: center;
+    margin: 20px;
 }
 
 .child-right {
-  flex: 50%;
-  padding: 20px;
-  background-color: red;
-  text-align: center;
+    flex: 50%;
+    padding: 20px;
+    background-color: red;
+    text-align: center;
 }
 
 /*-------------------------------------Isuru's CSS part ends here.-------------------------------------*/
 /*---------------------------------------Yasiru's CSS part starts here.-----------------------------------------------*/
 /* ----------prescription upload css starts here---------- */
 .presup-main {
-  padding: 5%;
+    padding: 5%;
 }
+
 .presup-submit {
-  background-color: black;
-  color: white;
-  padding: 30px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
+    background-color: black;
+    color: white;
+    padding: 30px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
 }
+
 .presup-submit:hover {
-  background-color: #2196f3;
-  color: black;
-  transition: 0.3s;
+    background-color: #2196f3;
+    color: black;
+    transition: 0.3s;
 }
+
 .presup-ytxtarea {
-  width: 100%;
+    width: 100%;
 }
+
 .presup-main img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 6%;
-  width: 700px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 6%;
+    width: 700px;
 }
+
 /* ----------prescription upload css ends here---------- */
 /* ----------my account css starts here---------- */
 .ymyacc {
-  padding: 3%;
-  margin-left: 5%;
-  margin-right: 5%;
-  display: flex;
-  flex-direction: row;
+    padding: 3%;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: flex;
+    flex-direction: row;
 }
 
 .ymyaccleft {
-  padding: 20px;
-  flex: 50%;
+    padding: 20px;
+    flex: 50%;
 }
 
 .ymyaccright {
-  flex: 50%;
-  display: flex;
-  justify-content: center;
+    flex: 50%;
+    display: flex;
+    justify-content: center;
 }
 
 .ymyaccright img {
-  width: 100%;
-  margin: auto;
+    width: 100%;
+    margin: auto;
 }
 
 .y-edit {
-  background-color: #25262e;
-  color: white;
-  padding: 0px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 70px;
-  height: 30px;
-  font-size: small;
-  text-align: center;
+    background-color: #25262e;
+    color: white;
+    padding: 0px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 70px;
+    height: 30px;
+    font-size: small;
+    text-align: center;
 }
 
 .y-edit:hover {
-  background-color: #2196f3;
-  color: black;
-  transition: 0.3s;
+    background-color: #2196f3;
+    color: black;
+    transition: 0.3s;
 }
 
 .y-changepw {
-  background-color: #25262e;
-  color: white;
-  padding: 0px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 140px;
-  height: 30px;
-  font-size: small;
-  text-align: center;
+    background-color: #25262e;
+    color: white;
+    padding: 0px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 140px;
+    height: 30px;
+    font-size: small;
+    text-align: center;
 }
 
 .y-changepw:hover {
-  background-color: #2196f3;
-  color: black;
-  transition: 0.3s;
+    background-color: #2196f3;
+    color: black;
+    transition: 0.3s;
 }
 
 .myacc-logoutbtn {
-  background-color: #f44336;
-  border: none;
-  padding: 0px;
-  margin: 8px 0;
-  color: white;
-  cursor: pointer;
-  width: 70px;
-  height: 30px;
-  font-size: small;
-  text-align: center;
+    background-color: #f44336;
+    border: none;
+    padding: 0px;
+    margin: 8px 0;
+    color: white;
+    cursor: pointer;
+    width: 70px;
+    height: 30px;
+    font-size: small;
+    text-align: center;
 }
 
 .myacc-logoutbtn:hover {
-  background-color: #ce1f13;
-  color: white;
-  transition: 0.3s;
+    background-color: #ce1f13;
+    color: white;
+    transition: 0.3s;
 }
 
 /* ----------my account css ends here---------- */
 .ymycart {
-  margin: 70px;
-  display: flex;
-  flex-direction: row;
+    margin: 70px;
+    display: flex;
+    flex-direction: row;
 }
 
 .y-mycart-right {
-  border: black solid 0.2px;
-  background-color: #f1f1f1;
-  width: 300px;
-  padding-left: 2.5%;
-  padding-right: 2.5%;
-  margin-left: 10%;
-  flex: 30%;
+    border: black solid 0.2px;
+    background-color: #f1f1f1;
+    width: 300px;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+    margin-left: 10%;
+    flex: 30%;
 }
 
 .y-mycart-left {
-  flex: 50%;
+    flex: 50%;
 }
 
 .ymycart hr {
-  border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
 }
 
 .y-blackhr {
-  border: 0.1px solid grey;
+    border: 0.1px solid grey;
 }
 
 .yhead3 {
-  margin-left: 5%;
+    margin-left: 5%;
 }
 
 .yhead4 {
-  text-align: right;
+    text-align: right;
 }
 
 .hryitemdis {
-  border: 0.1px solid grey;
+    border: 0.1px solid grey;
 }
 
 #yheaditm {
-  font-weight: bolder;
+    font-weight: bolder;
 }
 
 .yitemdetails-Main {
-  display: flex;
+    display: flex;
 }
 
 .yitname {
-  display: flex;
+    display: flex;
 }
 
 .yitemdetails {
-  display: flex;
-  margin-left: auto;
+    display: flex;
+    margin-left: auto;
 }
 
 .y-space {
-  margin-left: 20px;
-  margin-right: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 .y-qty {
-  margin-left: 40px;
-  background-color: #ddd;
-  width: 50px;
-  text-align: center;
-  border-radius: 5px;
+    margin-left: 40px;
+    background-color: #ddd;
+    width: 50px;
+    text-align: center;
+    border-radius: 5px;
 }
 
 .ysubmit {
-  background-color: #25262e;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
+    background-color: #25262e;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
 
-  cursor: pointer;
-  width: 100%;
+    cursor: pointer;
+    width: 100%;
 }
 
 .ysubmit1 {
-  background-color: #f44336;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
+    background-color: #f44336;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
 
-  cursor: pointer;
-  width: 100%;
+    cursor: pointer;
+    width: 100%;
 }
 
 .ysubmit:hover {
-  background-color: #2196f3;
-  color: black;
-  transition: 0.3s;
-  border-color: #2196f3;
+    background-color: #2196f3;
+    color: black;
+    transition: 0.3s;
+    border-color: #2196f3;
 }
 
 .y-payment {
-  display: flex;
+    display: flex;
 }
 
 .y-payment img {
-  margin-top: 12px;
-  margin-left: 10px;
+    margin-top: 12px;
+    margin-left: 10px;
 }
 
 /*---------------------------------------Yasiru's CSS part Ends here.-----------------------------------------------*/
 /*---------------------------------------Janesha's CSS part starts here.-----------------------------------------------*/
 /*Privacy Policy page CSS part Starts here*/
 .privacy {
-  margin-left: 5%;
-  margin-right: 5%;
-  bottom: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+    bottom: 5%;
 }
 
 /*Privacy Policy page CSS part Ends here*/
 #aboutusi {
-  display: flex;
-  margin: 20px;
+    display: flex;
+    margin: 20px;
 }
+
 .aboutusimg {
-  width: 50%;
-  display: flex;
-  justify-content: center;
-  padding: 20px;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
 }
+
 .aboutusimg img {
-  width: 100%;
-  margin: auto;
+    width: 100%;
+    margin: auto;
 }
+
 .details {
-  padding: 20px;
-  width: 70%;
+    padding: 20px;
+    width: 70%;
 }
 
 .details h1 {
-  padding-top: 10px 0 10px 0;
+    padding-top: 10px 0 10px 0;
 }
 
 .details h2 {
-  padding-top: 10px 0 10px 0;
+    padding-top: 10px 0 10px 0;
 }
 
 .register {
-  background-color: #25262e;
-  color: white;
-  padding: 0px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer;
-  width: 140px;
-  height: 30px;
-  font-size: small;
-  text-align: center;
+    background-color: #25262e;
+    color: white;
+    padding: 0px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 140px;
+    height: 30px;
+    font-size: small;
+    text-align: center;
 }
 
 .register:hover {
-  background-color: #2196f3;
-  color: black;
-  transition: 0.3s;
+    background-color: #2196f3;
+    color: black;
+    transition: 0.3s;
 }
+
 /*checkout*/
 .checkout {
-  font-family: Arial;
-  font-size: 17px;
-  padding: 5%;
-  padding-bottom: 10%;
+    font-family: Arial;
+    font-size: 17px;
+    padding: 5%;
+    padding-bottom: 10%;
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 .jrow {
-  display: -ms-flexbox; /* IE10 */
-  display: flex;
-  -ms-flex-wrap: wrap; /* IE10 */
-  flex-wrap: wrap;
-  margin: 0 -16px;
+    display: -ms-flexbox; /* IE10 */
+    display: flex;
+    -ms-flex-wrap: wrap; /* IE10 */
+    flex-wrap: wrap;
+    margin: 0 -16px;
 }
 
 .jcolumn-25 {
-  -ms-flex: 25%; /* IE10 */
-  flex: 25%;
+    -ms-flex: 25%; /* IE10 */
+    flex: 25%;
 }
 
 .jcolumn-50 {
-  -ms-flex: 50%; /* IE10 */
-  flex: 50%;
+    -ms-flex: 50%; /* IE10 */
+    flex: 50%;
 }
 
 .jcolumn-75 {
-  -ms-flex: 75%; /* IE10 */
-  flex: 75%;
+    -ms-flex: 75%; /* IE10 */
+    flex: 75%;
 }
 
 .jcolumn-25,
 .jcolumn-50,
 .jcolumn-75 {
-  padding: 0 15px;
-  padding-left: 3%;
+    padding: 0 15px;
+    padding-left: 3%;
 }
 
 .jrow input[type="text"] {
-  width: 100%;
-  margin-bottom: 20px;
-  padding: 12px;
-  border: 1px solid #ccc;
-  border-radius: 3px;
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
 }
+
 .icon-jcontainer {
-  margin-bottom: 20px;
-  padding: 7px 0;
-  font-size: 24px;
+    margin-bottom: 20px;
+    padding: 7px 0;
+    font-size: 24px;
 }
 
 .jrow label {
-  margin-bottom: 10px;
-  display: block;
+    margin-bottom: 10px;
+    display: block;
 }
 
 .jbutton {
-  background-color: #050505;
-  color: white;
-  padding: 12px;
-  margin: 10px 0;
-  border: none;
-  width: 100%;
-  border-radius: 3px;
-  cursor: pointer;
-  font-size: 17px;
-  display: inline-block;
-  height: 60px;
+    background-color: #050505;
+    color: white;
+    padding: 12px;
+    margin: 10px 0;
+    border: none;
+    width: 100%;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 17px;
+    display: inline-block;
+    height: 60px;
 }
 
 .jbutton:hover {
-  background-color: #1e90ff;
+    background-color: #1e90ff;
 }
 
 .span.jprice {
-  float: right;
-  color: rgb(255, 251, 251);
+    float: right;
+    color: rgb(255, 251, 251);
 }
+
 .checkout-img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 6%;
-  width: 700px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 6%;
+    width: 700px;
 }
+
 /*----------admin page css Starts----------*/
 #admin {
-  display: flex;
-  margin: 20px;
+    display: flex;
+    margin: 20px;
 }
+
 .section111 {
-  padding-top: 2%;
-  padding-left: 2%;
+    padding-top: 2%;
+    padding-left: 2%;
 }
+
 .navigate {
-  width: 25%;
-  margin-right: 50px;
-  background-color: #a7a7a7;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  font-size: larger;
-  padding: 40px 20px 20px 20px;
+    width: 25%;
+    margin-right: 50px;
+    background-color: #a7a7a7;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: larger;
+    padding: 40px 20px 20px 20px;
 }
 
 #dashboard {
-  width: 75%;
-  padding: 5px 20px 20px 20px;
+    width: 75%;
+    padding: 5px 20px 20px 20px;
 }
+
 .dashboard h1 {
-  padding-top: 2px;
-  font-size: 60px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    padding-top: 2px;
+    font-size: 60px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+
 .dashboard h2 {
-  font-size: 40px;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 40px;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
+
 .dashboard.column111 {
-  width: 37.5%;
-  padding-top: 20px;
+    width: 37.5%;
+    padding-top: 20px;
 }
+
 .dashboard.column122 {
-  width: 37.5%;
-  padding-top: 20px;
+    width: 37.5%;
+    padding-top: 20px;
 }
 
 .bt {
-  color: white;
-  text-align: center;
-  text-decoration: none;
-  font-size: 20px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 25px;
-  background-color: #1e90ff;
-  padding: 20px 20px 20px 20px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 25px;
+    background-color: #1e90ff;
+    padding: 20px 20px 20px 20px;
 }
 
 .bt:hover {
-  background-color: #000000;
-  color: #ffffff;
+    background-color: #000000;
+    color: #ffffff;
 }
 
 #adminimg {
-  display: flex;
-  margin: 10px;
-  padding-top: 10px;
+    display: flex;
+    margin: 10px;
+    padding-top: 10px;
 }
+
 .adminimg1 {
-  width: flex;
-  margin-right: 10px;
-  padding-top: 10px;
-  margin-left: 10px;
+    width: flex;
+    margin-right: 10px;
+    padding-top: 10px;
+    margin-left: 10px;
 }
+
 /*----------admin page css Ends----------*/
 /*---------------------------------------Janesha's CSS part ends here.-----------------------------------------------*/
 /*---------------------------------------sandani's CSS part starts here.-----------------------------------------------*/
 
 label {
-  cursor: pointer;
-  font-weight: 400;
+    cursor: pointer;
+    font-weight: 400;
 }
 
 .section-p1 {
-  padding: 1px 100px 20px 100px;
-  text-align: justify;
+    padding: 1px 100px 20px 100px;
+    text-align: justify;
 }
 
 .section-p1 .pro-container {
-  display: flex;
-  justify-content: space-between;
-  padding-top: 20px;
-  flex-wrap: wrap;
-  flex: 50%;
+    display: flex;
+    justify-content: space-between;
+    padding-top: 20px;
+    flex-wrap: wrap;
+    flex: 50%;
 }
 
 .section-p1 .pro {
-  width: 15%;
-  min-width: 250px;
-  padding: 10px 10px;
-  border: 12px solid #ddd;
-  border-radius: 25px;
-  cursor: pointer;
-  box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.2);
-  margin: 15px 0;
-  transition: 0.2s ease;
+    width: 15%;
+    min-width: 250px;
+    padding: 10px 10px;
+    border: 12px solid #ddd;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: 20px 20px 30px rgba(0, 0, 0, 0.2);
+    margin: 15px 0;
+    transition: 0.2s ease;
 }
 
 #TRwidth .pro {
-  width: 22%;
+    width: 22%;
 }
 
 #TRdescription {
-  text-align: center;
+    text-align: center;
 }
 
 #TRhr {
-  border: 1px solid #f1f1f1;
-  margin-bottom: 25px;
-  margin-left: 25px;
-  margin-right: 25px;
+    border: 1px solid #f1f1f1;
+    margin-bottom: 25px;
+    margin-left: 25px;
+    margin-right: 25px;
 }
 
 .section-p1 .pro:hover {
-  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.6);
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.6);
 }
 
 .section-p1 .pro .des {
-  text-align: start;
-  padding: 10px 0;
-  line-height: 0.01em;
-  text-align: center;
+    text-align: start;
+    padding: 10px 0;
+    line-height: 0.01em;
+    text-align: center;
 }
 
 .section-p1 .pro .des span {
-  color: #404040;
-  font-size: 15px;
-  line-height: 0.01em;
-  text-align: center;
+    color: #404040;
+    font-size: 15px;
+    line-height: 0.01em;
+    text-align: center;
 }
 
 .section-p1 .pro img {
-  width: 100%;
-  border-radius: 20px;
+    width: 100%;
+    border-radius: 20px;
 }
 
 .section-p1 .pro .des h5 {
-  padding-top: 2px;
-  color: #25262e;
-  font-size: 14px;
-  line-height: 0.1em;
-  text-align: center;
+    padding-top: 2px;
+    color: #25262e;
+    font-size: 14px;
+    line-height: 0.1em;
+    text-align: center;
 }
 
 .section-p1 .pro .des i {
-  font-size: 12px;
-  color: rgb(229, 194, 0);
-  line-height: 0.1em;
-  text-align: center;
+    font-size: 12px;
+    color: rgb(229, 194, 0);
+    line-height: 0.1em;
+    text-align: center;
 }
 
 .section-p1 .pro .des h4 {
-  padding-top: 2px;
-  font-size: 15px;
-  font-weight: 700;
-  color: darkgreen;
-  line-height: 0.01em;
-  text-align: center;
+    padding-top: 2px;
+    font-size: 15px;
+    font-weight: 700;
+    color: darkgreen;
+    line-height: 0.01em;
+    text-align: center;
 }
 
 .section-p1 .pro .des p {
-  text-align: center;
+    text-align: center;
 }
 
 .section-p1 .button {
-  border: none;
-  color: white;
-  padding: 12px 25px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  line-height: 0.01em;
-  border-radius: 25px;
-  background-color: cadetblue;
+    border: none;
+    color: white;
+    padding: 12px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    line-height: 0.01em;
+    border-radius: 25px;
+    background-color: cadetblue;
 }
 
 .section-p1 .button:hover {
-  background-color: black;
-  transition: 0.3s;
+    background-color: black;
+    transition: 0.3s;
 }
 
 .next-pre {
-  position: fixed;
-  object-position: center;
+    position: fixed;
+    object-position: center;
 }
 
 .pre-next a {
-  text-decoration: none;
-  display: inline-block;
-  padding: 8px 16px;
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
 }
 
 .pre-next a:hover {
-  background-color: #ddd;
-  color: black;
+    background-color: #ddd;
+    color: black;
 }
 
 .next {
-  background-color: lightseagreen;
-  color: white;
+    background-color: lightseagreen;
+    color: white;
 }
 
 .pre-next {
-  height: 200px;
-  position: relative;
-  border: none;
+    height: 200px;
+    position: relative;
+    border: none;
 }
 
 .pre-next .center {
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  -ms-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 .topic {
-  font: 15px;
-  font-family: Georgia;
-  font-style: oblique;
-  text-align: center;
+    font: 15px;
+    font-family: Georgia;
+    font-style: oblique;
+    text-align: center;
 
-  color: #25852a;
+    color: #25852a;
 }
 
 .section-p1 .para {
-  border: none;
-  padding: 3px;
-  text-align: center;
+    border: none;
+    padding: 3px;
+    text-align: center;
 }
 
 /*---------------------------------------sandani's CSS part ends here.-----------------------------------------------*/
@@ -1343,100 +1363,102 @@ label {
 /*---------------------------------------Bagya's CSS part ends here.-----------------------------------------------*/
 /*--------------------media query for smaller screens starts here.--------------------*/
 @media screen and (max-width: 800px) {
-  .header a {
-    float: none;
-    display: block;
-    text-align: left;
-  }
+    .header a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
 
-  .header-right {
-    float: none;
-  }
+    .header-right {
+        float: none;
+    }
 
-  .menu .search-container {
-    float: none;
-  }
+    .menu .search-container {
+        float: none;
+    }
 
-  .menu a,
-  .menu input[type="text"],
-  .menu .search-container button {
-    float: none;
-    display: block;
-    text-align: left;
-    width: 100%;
-    margin: 0;
-    padding: 14px;
-  }
+    .menu a,
+    .menu input[type="text"],
+    .menu .search-container button {
+        float: none;
+        display: block;
+        text-align: left;
+        width: 100%;
+        margin: 0;
+        padding: 14px;
+    }
 
-  .menu input[type="text"] {
-    border: 1px solid #ccc;
-  }
+    .menu input[type="text"] {
+        border: 1px solid #ccc;
+    }
 
-  .row.primary {
-    grid-template-columns: 1fr;
-  }
+    .row.primary {
+        grid-template-columns: 1fr;
+    }
 
-  .flex-container {
-    flex-direction: column;
-  }
+    .flex-container {
+        flex-direction: column;
+    }
 
-  .Sign-Up .cancelbtn,
-  .Sign-Up .signupbtn {
-    width: 100%;
-  }
+    .Sign-Up .cancelbtn,
+    .Sign-Up .signupbtn {
+        width: 100%;
+    }
 
-  .LoginPage span.psw {
-    display: block;
-    float: none;
-  }
+    .LoginPage span.psw {
+        display: block;
+        float: none;
+    }
 
-  .LoginPage .cancelbtn {
-    width: 100%;
-  }
+    .LoginPage .cancelbtn {
+        width: 100%;
+    }
 
-  .flex-container-loginpage {
-    flex-direction: column;
-  }
+    .flex-container-loginpage {
+        flex-direction: column;
+    }
 
-  .flex-container-contactus {
-    flex-direction: column;
-  }
+    .flex-container-contactus {
+        flex-direction: column;
+    }
 
-  .getintouch {
-    margin: auto;
-    text-align: center;
-  }
+    .getintouch {
+        margin: auto;
+        text-align: center;
+    }
 
-  .yparent {
-    flex-direction: column;
-  }
+    .yparent {
+        flex-direction: column;
+    }
 
-  .yparent textarea {
-    width: 100%;
-  }
+    .yparent textarea {
+        width: 100%;
+    }
 
-  .ymycart {
-    flex-direction: column;
-  }
+    .ymycart {
+        flex-direction: column;
+    }
 
-  .y-mycart-right {
-    margin: auto;
-    width: 100%;
-  }
+    .y-mycart-right {
+        margin: auto;
+        width: 100%;
+    }
 
-  .ymyacc {
-    flex-direction: column;
-  }
-  .jrow {
-    flex-direction: column-reverse;
-  }
-  .jcolumn-25 {
-    margin-bottom: 20px;
-  }
+    .ymyacc {
+        flex-direction: column;
+    }
 
-  /* .mother-left-right {
-    flex-direction: column;
-  } */
+    .jrow {
+        flex-direction: column-reverse;
+    }
+
+    .jcolumn-25 {
+        margin-bottom: 20px;
+    }
+
+    /* .mother-left-right {
+      flex-direction: column;
+    } */
 }
 
 /*--------------------media query for smaller screens ends here.--------------------*/

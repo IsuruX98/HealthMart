@@ -22,7 +22,7 @@ if (isset($_GET['user_ID'])) {
         if (mysqli_num_rows($result_set) == 1) {
             //user found
             $result = mysqli_fetch_assoc($result_set);
-            $PSW =  $result['UPW'];
+            $PSW = $result['UPW'];
         } else {
             //user not found
             header('Location: myaccAdmin.php?err=user_not_found');
@@ -61,30 +61,31 @@ if (isset($_POST['submit'])) {
     }
 }
 ?>
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>healthmart.com</title>
-    <link rel="shortcut icon" href="/Images/logo.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="/CSS/template2.css" />
-    <link rel="stylesheet" href="/CSS/normalize.css" />
-    <link rel="stylesheet" href="/CSS/changepw.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
-    <!--stylesheet for icons in footer -->
-    <script src="/JS/home.js"></script>
-    <script src="/JS/admindashboard.js"></script>
-    <script src="/JS/cancel.js"></script>
-</head>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>healthmart.com</title>
+        <link rel="shortcut icon" href="/Images/logo.ico" type="image/x-icon"/>
+        <link rel="stylesheet" href="/CSS/template2.css"/>
+        <link rel="stylesheet" href="/CSS/normalize.css"/>
+        <link rel="stylesheet" href="/CSS/changepw.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"/>
+        <!--stylesheet for icons in footer -->
+        <script src="/JS/home.js"></script>
+        <script src="/JS/admindashboard.js"></script>
+        <script src="/JS/cancel.js"></script>
+    </head>
 
-<body>
+    <body>
     <div class="header">
         <a href="#default" class="logo"><i class="far fa-eye"></i> HealthMart</a>
         <div class="header-right">
             <?php
+            //showing admin name
             if (isset($_SESSION['user_id'])) {
                 echo "<a onclick=\"myaccAdmin();\"><i class=\"far fa-user-circle\"> </i>&nbsp;&nbsp;&nbsp;";
                 echo $_SESSION['name'] . "</a>";
@@ -115,7 +116,7 @@ if (isset($_POST['submit'])) {
                     <div class="signup-container">
                         <h1>Change Password</h1>
                         <p>Please fill this form to update your password.</p>
-                        <hr />
+                        <hr/>
                         <!-- display error messages from php validation -->
                         <?php
                         if (!empty($errors)) {
@@ -129,16 +130,19 @@ if (isset($_POST['submit'])) {
                         }
                         ?>
                         <p>
-                            <input type="hidden" name="user_ID" value="<?php echo $user_ID; ?>" />
+                            <input type="hidden" name="user_ID" value="<?php echo $user_ID; ?>"/>
                             <label for="psw"><b>Enter New Password</b></label>
-                            <input type="password" placeholder="Enter Password" name="psw" minlength="8" required />
+                            <input type="password" placeholder="Enter Password" name="psw" minlength="8" required/>
                             <label for="psw-repeat"><b>Repeat New Password</b></label>
-                            <input type="password" placeholder="Repeat Password" name="psw-repeat" required />
+                            <input type="password" placeholder="Repeat Password" name="psw-repeat" required/>
                         <p>
 
                         </p>
                         <div class="signupfrom-buttons">
-                            <button type="submit" class="signupbtn" name="submit" onclick="return confirm('Are you sure you want to update your Password?');">Update Password</button>
+                            <button type="submit" class="signupbtn" name="submit"
+                                    onclick="return confirm('Are you sure you want to update your Password?');">Update
+                                Password
+                            </button>
                             <button type="button" class="cancelbtn" onclick="cancel();">Cancel</button>
                         </div>
                     </div>
@@ -175,9 +179,9 @@ if (isset($_POST['submit'])) {
         </div>
     </footer>
 
-</body>
+    </body>
 
-</html>
+    </html>
 <?php
 //close database connection
 mysqli_close($conn); ?>

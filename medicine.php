@@ -13,10 +13,12 @@ if (isset($_GET['search'])) {
 
     $items = mysqli_query($conn, $query);
     if ($items) {
+        //loop through the database and find a match
         while ($item = mysqli_fetch_assoc($items)) {
             $itemList .= "<a href=\"searchedItem.php?item_ID={$item['itemID']}\">{$item['genericName']} / {$item['brandName']}</a>";
         }
     } else {
+        //if there is an error
         $errors[] = 'Database query failed.';
     }
 }
@@ -24,18 +26,19 @@ if (isset($_GET['search'])) {
 <?php
 
 $status = "";
-
+//add to cart process
 if (isset($_POST['code']) && $_POST['code'] != "") {
 
     $code = $_POST['code'];
     $result = mysqli_query($conn, "SELECT * FROM `item` WHERE `code`='$code'");
+    //loop through the item table and gathering details of the item
     $row = mysqli_fetch_assoc($result);
     $genericName = $row['genericName'];
     $brandName = $row['brandName'];
     $code = $row['code'];
     $itemPrice = $row['itemPrice'];
     $itemImage = $row['itemImage'];
-
+//storing them in an array
     $cartArray = array(
         $code => array(
             'genericName' => $genericName,
@@ -62,41 +65,44 @@ if (isset($_POST['code']) && $_POST['code'] != "") {
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>healthmart.com</title>
-    <link rel="shortcut icon" href="/Images/logo.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="/CSS/template2.css" />
-    <link rel="stylesheet" href="/CSS/normalize.css" />
-    <link rel="stylesheet" href="/CSS/store.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
-    <!--stylesheet for icons in footer -->
-    <script src="/JS/home.js"></script>
-</head>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>healthmart.com</title>
+        <link rel="shortcut icon" href="/Images/logo.ico" type="image/x-icon"/>
+        <link rel="stylesheet" href="/CSS/template2.css"/>
+        <link rel="stylesheet" href="/CSS/normalize.css"/>
+        <link rel="stylesheet" href="/CSS/store.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"/>
+        <!--stylesheet for icons in footer -->
+        <script src="/JS/home.js"></script>
+    </head>
 
-<body>
+    <body>
     <div class="header">
         <a href="#" onclick="home();" class="logo"><i class="far fa-eye"></i> HealthMart</a>
         <div class="header-right">
             <?php
+            //if there is a user display username
             if (isset($_SESSION['user_id'])) {
                 echo "<a onclick=\"myacc();\"><i class=\"far fa-user-circle\"> </i>&nbsp;&nbsp;&nbsp;";
                 echo $_SESSION['name'] . "</a>";
             } else {
+                //if the user is not a registered user display a register button
                 echo "<a onclick=\"register();\"><i class=\"far fa-user-circle\"></i> Sign in</a>";
             }
             ?>
             <?php
+            //display the shopping cart button if there is at least one item added to cart
             if (!empty($_SESSION["shopping_cart"])) {
                 $cart_count = count(array_keys($_SESSION["shopping_cart"]));
-            ?>
+                ?>
                 <a href="cart.php"><i class="fa fa-shopping-cart"></i> : <?php echo $cart_count; ?></a>
-            <?php
+                <?php
             }
             ?>
         </div>
@@ -111,11 +117,12 @@ if (isset($_POST['code']) && $_POST['code'] != "") {
         </div>
         <div class="search-container">
             <form action="medicine.php" method="GET">
-                <input type="text" placeholder="Search.." name="search" />
+                <input type="text" placeholder="Search.." name="search"/>
                 <button type="submit">Submit</button>
             </form>
             <div class="dropdown-content" id="drop">
                 <?php
+                //display searched items
                 if ($items) {
                     echo $itemList;
                 }
@@ -127,6 +134,7 @@ if (isset($_POST['code']) && $_POST['code'] != "") {
     <h2>
         <t>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;Medicines
     </h2>
+    <!--display messages from the add to cart process-->
     <div class="status" id="status1">
         <?php echo $status; ?>
     </div>
@@ -135,6 +143,7 @@ if (isset($_POST['code']) && $_POST['code'] != "") {
 
             <?php
             $result = mysqli_query($conn, "SELECT * FROM `item` WHERE `type` = 'medicine'");
+            //loop through the item table and gather details of the item and printing them
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<div class='pro'>
                   <form method='post' action=''>
@@ -187,7 +196,7 @@ if (isset($_POST['code']) && $_POST['code'] != "") {
             <div class="column subscribe">
                 <h3>Newsletter</h3>
                 <div class="footersearch">
-                    <input type="email" placeholder="Your email id here" />
+                    <input type="email" placeholder="Your email id here"/>
                     <button>Subscribe</button>
                 </div>
             </div>
@@ -198,14 +207,9 @@ if (isset($_POST['code']) && $_POST['code'] != "") {
     </footer>
 
 
+    </body>
 
-
-
-
-
-</body>
-
-</html>
+    </html>
 <?php
 //close connection to database
 mysqli_close($conn);
