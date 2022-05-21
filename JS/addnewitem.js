@@ -1,8 +1,9 @@
 function additem() {
-  alert("item added successfully");
-  return true;
+    alert("item added successfully");
+    return true;
 }
+
 function modifyitem() {
-  alert("item Modified successfully");
-  return true;
+    alert("item Modified successfully");
+    return true;
 }

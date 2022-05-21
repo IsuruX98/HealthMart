@@ -1,4 +1,4 @@
 function contactus() {
-  alert("item added successfully");
-  return true;
+    alert("successfully received the message");
+    return true;
 }

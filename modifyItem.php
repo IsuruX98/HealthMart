@@ -25,7 +25,7 @@ if (isset($_GET['item_ID'])) {
         if (mysqli_num_rows($result_set) == 1) {
             //item found
             $result = mysqli_fetch_assoc($result_set);
-            $genericname =  $result['genericName'];
+            $genericname = $result['genericName'];
             $brandname = $result['brandName'];
             $itmprice = $result['itemPrice'];
             $fileName = $result['itemImage'];
@@ -95,7 +95,7 @@ if (isset($_POST['submit'])) {
         $result = mysqli_query($conn, $query);
 
         if ($result) {
-            //query unsuccessful.... redirecting to home
+            //query unsuccessful.... redirecting to adminHome
             header('location: admindashboard.php?item_modified=true');
         } else {
             $errors[] = 'Failed to modify the record';
@@ -103,30 +103,31 @@ if (isset($_POST['submit'])) {
     }
 }
 ?>
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>healthmart.com</title>
-    <link rel="shortcut icon" href="/Images/logo.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="/CSS/template2.css" />
-    <link rel="stylesheet" href="/CSS/normalize.css" />
-    <link rel="stylesheet" href="/CSS/modifyItem.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
-    <!--stylesheet for icons in footer -->
-    <script src="/JS/cancel.js"></script>
-    <script src="addnewitem.js"></script>
-    <script src="/JS/admindashboard.js"></script>
-</head>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>healthmart.com</title>
+        <link rel="shortcut icon" href="/Images/logo.ico" type="image/x-icon"/>
+        <link rel="stylesheet" href="/CSS/template2.css"/>
+        <link rel="stylesheet" href="/CSS/normalize.css"/>
+        <link rel="stylesheet" href="/CSS/modifyItem.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"/>
+        <!--stylesheet for icons in footer -->
+        <script src="/JS/cancel.js"></script>
+        <script src="addnewitem.js"></script>
+        <script src="/JS/admindashboard.js"></script>
+    </head>
 
-<body>
+    <body>
     <div class="header">
         <a href="#default" class="logo"><i class="far fa-eye"></i> HealthMart</a>
         <div class="header-right">
-            <a href="#" onclick="adminDashBoard();"><i class="far fa-user-circle"> </i>&nbsp;&nbsp;&nbsp;<?php echo $_SESSION['name']; ?></a>
+            <a href="#" onclick="adminDashBoard();"><i
+                        class="far fa-user-circle"> </i>&nbsp;&nbsp;&nbsp;<?php echo $_SESSION['name']; ?></a>
         </div>
     </div>
     <div class="menu">
@@ -146,24 +147,27 @@ if (isset($_POST['submit'])) {
         <form action="modifyItem.php" method="post" enctype="multipart/form-data" onsubmit="modifyitem();">
             <div class="addNewItemPage-container">
                 <h1>View / Modify Item</h1>
-                <hr />
-                <input type="hidden" name="item_ID" value="<?php echo $item_ID; ?>" />
+                <hr/>
+                <input type="hidden" name="item_ID" value="<?php echo $item_ID; ?>"/>
                 <label for="genericname"><b>Generic Name</b></label>
-                <input type="text" placeholder="Enter generic name of the item " name="genericname" <?php echo 'value ="' . $genericname . '"'; ?>>
+                <input type="text" placeholder="Enter generic name of the item "
+                       name="genericname" <?php echo 'value ="' . $genericname . '"'; ?>>
 
                 <label for="brandname"><b>Brand Name</b></label>
-                <input type="text" placeholder="Enter Brand name of the item" name="brandname" <?php echo 'value ="' . $brandname . '"'; ?>>
+                <input type="text" placeholder="Enter Brand name of the item"
+                       name="brandname" <?php echo 'value ="' . $brandname . '"'; ?>>
 
                 <label for="itmprice"><b>Price Rs.</b></label>
-                <input type="text" placeholder="Enter Price of the item" name="itmprice" <?php echo 'value ="' . $itmprice . '"'; ?>>
+                <input type="text" placeholder="Enter Price of the item"
+                       name="itmprice" <?php echo 'value ="' . $itmprice . '"'; ?>>
 
                 <h3>Type :</h3>
                   <label for="medicine">medicine</label>
-                <input type="radio" id="medicine" name="type" value="medicine" />
+                <input type="radio" id="medicine" name="type" value="medicine"/>
                  <label for="medicine">medical devices</label>
-                <input type="radio" id="medical-devices" name="type" value="medical devices" />
+                <input type="radio" id="medical-devices" name="type" value="medical devices"/>
                   <label for="medicine">traditional remedies</label>
-                <input type="radio" id="traditional-remedies" name="type" value="traditional remedies" />
+                <input type="radio" id="traditional-remedies" name="type" value="traditional remedies"/>
                  
 
                 <h3>Upload Image for the Item :</h3>
@@ -172,12 +176,12 @@ if (isset($_POST['submit'])) {
                     echo "<p class=errors>*invalid file type</p>";
                 }
                 ?>
-                <input type="file" class="itemImgUpload" name="itemImgUpload" /><br />
+                <input type="file" class="itemImgUpload" name="itemImgUpload"/><br/>
                 <p>
                     Select a JPG / PNG . Once selected, your image
                     file is shown above.
                 </p>
-                <br />
+                <br/>
 
                 <button type="submit" name="submit">Submit</button>
             </div>
@@ -215,9 +219,9 @@ if (isset($_POST['submit'])) {
             <p>© 2022 HealthMart,inc. All rights reserved.</p>
         </div>
     </footer>
-</body>
+    </body>
 
-</html>
+    </html>
 <?php
 //close connection to database
 mysqli_close($conn);

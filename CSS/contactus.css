@@ -1,86 +1,86 @@
 .flex-container-contactus {
-  display: flex;
-  flex-direction: row;
+    display: flex;
+    flex-direction: row;
 }
 
 .flex-container-contactus-left {
-  flex: 50%;
-  padding: 20px;
+    flex: 50%;
+    padding: 20px;
 }
 
 .flex-container-contactus-right {
-  flex: 50%;
-  margin: auto;
+    flex: 50%;
+    margin: auto;
 }
 
 .flex-container-contactus-right-up-down {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .flex-container-contactus-right-up {
-  flex: 50%;
+    flex: 50%;
 }
 
 .flex-container-contactus-right-down {
-  flex: 50%;
+    flex: 50%;
 }
 
 .flex-container-contactus-right-down img {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
-  margin-top: -30px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    margin-top: -30px;
 }
 
 .contactus-form input[type="text"] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0 22px 0;
-  display: inline-block;
-  border: none;
-  background: #f1f1f1;
+    width: 100%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1;
 }
 
 .getintouch {
-  margin: auto;
-  width: 70%;
-  margin-right: -50px;
-  margin-top: 70px;
+    margin: auto;
+    width: 70%;
+    margin-right: -50px;
+    margin-top: 70px;
 }
 
 .contactus-form {
-  padding: 30px;
+    padding: 30px;
 }
 
 .contactus-form button {
-  background-color: #25262e;
-  color: white;
-  padding: 14px 20px;
-  margin: 20px 0;
-  border: none;
-  cursor: pointer;
-  width: 100%;
+    background-color: #25262e;
+    color: white;
+    padding: 14px 20px;
+    margin: 20px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
 }
 
 .contactus-form button:hover {
-  background-color: #2196f3;
-  color: black;
-  transition: 0.3s;
+    background-color: #2196f3;
+    color: black;
+    transition: 0.3s;
 }
 
 .contactus-form textarea {
-  width: 100%;
+    width: 100%;
 }
 
 @media screen and (max-width: 800px) {
-  .flex-container-contactus {
-    flex-direction: column;
-  }
+    .flex-container-contactus {
+        flex-direction: column;
+    }
 
-  .getintouch {
-    margin: auto;
-    text-align: center;
-  }
+    .getintouch {
+        margin: auto;
+        text-align: center;
+    }
 }

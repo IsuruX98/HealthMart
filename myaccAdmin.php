@@ -8,26 +8,26 @@ if (!isset($_SESSION['user_id'])) {
     header('location: loginForm.php');
 }
 ?>
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>healthmart.com</title>
-    <link rel="shortcut icon" href="/Images/logo.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="/CSS/template2.css" />
-    <link rel="stylesheet" href="/CSS/normalize.css" />
-    <link rel="stylesheet" href="/CSS/myaccAdmin.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
-    <!--stylesheet for icons in footer -->
-    <script src="/JS/home.js"></script>
-    <script src="/JS/admindashboard.js"></script>
-    <script src="/JS/cancel.js"></script>
-</head>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>healthmart.com</title>
+        <link rel="shortcut icon" href="/Images/logo.ico" type="image/x-icon"/>
+        <link rel="stylesheet" href="/CSS/template2.css"/>
+        <link rel="stylesheet" href="/CSS/normalize.css"/>
+        <link rel="stylesheet" href="/CSS/myaccAdmin.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"/>
+        <!--stylesheet for icons in footer -->
+        <script src="/JS/home.js"></script>
+        <script src="/JS/admindashboard.js"></script>
+        <script src="/JS/cancel.js"></script>
+    </head>
 
-<body>
+    <body>
     <div class="header">
         <a href="#default" class="logo"><i class="far fa-eye"></i> HealthMart</a>
         <div class="header-right">
@@ -59,35 +59,38 @@ if (!isset($_SESSION['user_id'])) {
 
             <h4>Account Information</h4>
 
-            <hr />
+            <hr/>
 
             <h4>Contact Information</h4>
 
+            <!--getting user details from session variables that created from the loginForm-->
             <p>Name : <?php echo $_SESSION['name']; ?></p>
             <p>E-mail : <?php echo $_SESSION['email']; ?></p>
             <p>Mobile Number: 0<?php echo $_SESSION['mobileNo']; ?></p>
 
-            <br />
+            <br/>
 
             <h4>Address Book</h4>
 
-            <hr />
+            <hr/>
 
             <p>Address</p>
 
             <p>
                 <?php echo $_SESSION['address']; ?>
             </p>
-            <br />
+            <br/>
 
             <div class="myacc-btnbox">
                 <button class="myacc-editbtn"><?php echo "<a href=\"editAdminAcc.php?user_ID={$_SESSION['user_id']}\">Edit Account Infomation</a> "; ?></button>
-                <button type="submit" name="changepw" class="myacc-changepwbtn"><?php echo "<a href=\"changepwAdmin.php?user_ID={$_SESSION['user_id']}\">Change Password</a> "; ?></button>
-                <button class="myacc-logoutbtn" onclick="return confirm('Are you sure you want to Log Out ?');"><a href="logout.php">Log Out</a></button>
+                <button type="submit" name="changepw"
+                        class="myacc-changepwbtn"><?php echo "<a href=\"changepwAdmin.php?user_ID={$_SESSION['user_id']}\">Change Password</a> "; ?></button>
+                <button class="myacc-logoutbtn" onclick="return confirm('Are you sure you want to Log Out ?');"><a
+                            href="logout.php">Log Out</a></button>
             </div>
         </div>
         <div class="ymyaccright">
-            <img src="/Images/myacc.jpg" alt="" />
+            <img src="/Images/myacc.jpg" alt=""/>
         </div>
     </div>
     <footer>
@@ -119,9 +122,9 @@ if (!isset($_SESSION['user_id'])) {
         </div>
     </footer>
 
-</body>
+    </body>
 
-</html>
+    </html>
 <?php
 //close connection to database
 mysqli_close($conn);

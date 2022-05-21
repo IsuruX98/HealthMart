@@ -66,50 +66,55 @@ if (isset($_GET['search'])) {
 
     $items = mysqli_query($conn, $query);
     if ($items) {
+        //loop through the database and find a match
         while ($item = mysqli_fetch_assoc($items)) {
             $itemList .= "<a href=\"searchedItem.php?item_ID={$item['itemID']}\">{$item['genericName']} / {$item['brandName']}</a>";
         }
     } else {
+        //if there is an error
         $errors[] = 'Database query failed.';
     }
 }
 ?>
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 
-<head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>healthmart.com</title>
-    <link rel="shortcut icon" href="/Images/logo.ico" type="image/x-icon" />
-    <link rel="stylesheet" href="/CSS/template2.css" />
-    <link rel="stylesheet" href="/CSS/normalize.css" />
-    <link rel="stylesheet" href="/CSS/register.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" />
-    <!--stylesheet for icons in footer -->
-    <script src="/JS/home.js"></script>
-    <script src="/JS/cancel.js"></script>
-</head>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>healthmart.com</title>
+        <link rel="shortcut icon" href="/Images/logo.ico" type="image/x-icon"/>
+        <link rel="stylesheet" href="/CSS/template2.css"/>
+        <link rel="stylesheet" href="/CSS/normalize.css"/>
+        <link rel="stylesheet" href="/CSS/register.css"/>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"/>
+        <!--stylesheet for icons in footer -->
+        <script src="/JS/home.js"></script>
+        <script src="/JS/cancel.js"></script>
+    </head>
 
-<body>
+    <body>
     <div class="header">
         <a href="#" onclick="home();" class="logo"><i class="far fa-eye"></i> HealthMart</a>
         <div class="header-right">
             <?php
+            //if there is a user display username
             if (isset($_SESSION['user_id'])) {
                 echo "<a onclick=\"myacc();\"><i class=\"far fa-user-circle\"> </i>&nbsp;&nbsp;&nbsp;";
                 echo $_SESSION['name'] . "</a>";
             } else {
+                //if the user is not a registered user display a register button
                 echo "<a onclick=\"register();\"><i class=\"far fa-user-circle\"></i> Sign in</a>";
             }
             ?>
             <?php
+            //display the shopping cart button if there is at least one item added to cart
             if (!empty($_SESSION["shopping_cart"])) {
                 $cart_count = count(array_keys($_SESSION["shopping_cart"]));
-            ?>
+                ?>
                 <a href="cart.php"><i class="fa fa-shopping-cart"></i> : <?php echo $cart_count; ?></a>
-            <?php
+                <?php
             }
             ?>
         </div>
@@ -124,10 +129,11 @@ if (isset($_GET['search'])) {
         </div>
         <div class="search-container">
             <form action="register.php" method="GET">
-                <input type="text" placeholder="Search.." name="search" />
+                <input type="text" placeholder="Search.." name="search"/>
                 <button type="submit">Submit</button>
             </form>
             <div class="dropdown-content" id="drop">
+                <!--showing the results of search-->
                 <?php
                 if ($items) {
                     echo $itemList;
@@ -146,9 +152,10 @@ if (isset($_GET['search'])) {
                     <div class="signup-container">
                         <h1>Sign Up</h1>
                         <p>Please fill in this form to create an account.</p>
-                        <div class="already-member"><a href="#" onclick="alreadyAmember();">Alredy a member : Login here</a></div>
+                        <div class="already-member"><a href="#" onclick="alreadyAmember();">Alredy a member : Login
+                                here</a></div>
 
-                        <hr />
+                        <hr/>
                         <!-- display error messages from php validation -->
                         <?php
                         if (!empty($errors)) {
@@ -163,19 +170,19 @@ if (isset($_GET['search'])) {
                         ?>
                         <p>
                             <label for="Name"><b>Full Name</b></label>
-                            <input type="text" placeholder="Enter your full name" name="Name" required />
+                            <input type="text" placeholder="Enter your full name" name="Name" required/>
                             <label for="email"><b>Email</b></label>
-                            <input type="email" placeholder="Enter Email" name="email" required />
+                            <input type="email" placeholder="Enter Email" name="email" required/>
                             <label for="MoblieNo"><b>Mobile Number</b></label>
-                            <input type="text" placeholder="Enter your mobile number" name="MoblieNo" required />
+                            <input type="text" placeholder="Enter your mobile number" name="MoblieNo" required/>
                             <label for="address"><b>Address</b></label>
-                            <input type="text" placeholder="Enter your address" name="address" required />
+                            <input type="text" placeholder="Enter your address" name="address" required/>
                             <label for="city"><b>City</b></label>
-                            <input type="text" placeholder="Enter your city" name="city" />
+                            <input type="text" placeholder="Enter your city" name="city"/>
                             <label for="psw"><b>Password</b></label>
-                            <input type="password" placeholder="Enter Password" name="psw" minlength="8" required />
+                            <input type="password" placeholder="Enter Password" name="psw" minlength="8" required/>
                             <label for="psw-repeat"><b>Repeat Password</b></label>
-                            <input type="password" placeholder="Repeat Password" name="psw-repeat" required />
+                            <input type="password" placeholder="Repeat Password" name="psw-repeat" required/>
                         <p>
                             By creating an account you agree to our
                             <a href="#">Terms & Privacy</a>.
@@ -224,7 +231,7 @@ if (isset($_GET['search'])) {
             <div class="column subscribe">
                 <h3>Newsletter</h3>
                 <div class="footersearch">
-                    <input type="email" placeholder="Your email id here" />
+                    <input type="email" placeholder="Your email id here"/>
                     <button>Subscribe</button>
                 </div>
             </div>
@@ -235,9 +242,9 @@ if (isset($_GET['search'])) {
     </footer>
 
 
-</body>
+    </body>
 
-</html>
+    </html>
 <?php
 //close database connection
 mysqli_close($conn); ?>
