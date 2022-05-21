@@ -45,8 +45,10 @@ if (isset($_POST['submit'])) {
     $pretxt = $_POST['pretxt'];
     $newaddress = $_POST['newaddress'];
 
-    //getting the details of the file that uploaded
-    $fileName = $_FILES['fileupload']['name'];
+    if (isset($_POST['fileupload']))
+
+        //getting the details of the file that uploaded
+        $fileName = $_FILES['fileupload']['name'];
     $fileType = $_FILES['fileupload']['type'];
     $fileSize = $_FILES['fileupload']['size'];
     //temporary file name to store file
@@ -56,7 +58,7 @@ if (isset($_POST['submit'])) {
     $uploadTo = 'upload/';
 
     //checking file type
-    if ($fileType == 'image/jpeg' || $fileType == 'image/png' || $fileType == 'application/pdf') {
+    if ($fileType == 'image/jpeg' || $fileType == 'image/png' || $fileType == 'application/pdf' || $fileType == '') {
         //to move the uploaded file to specific location
         $fileUplpaded = move_uploaded_file($tempName, $uploadTo . $fileName);
     } else {
@@ -93,6 +95,7 @@ if (isset($_POST['submit'])) {
             $errors[] = 'Failed to add the record';
         }
     }
+
 }
 ?>
     <!DOCTYPE html>
