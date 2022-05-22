@@ -115,7 +115,7 @@
 }
 
 .flex-item-left1 a:visited {
-    color: inherit;
+    color: white;
 }
 
 .flex-item-middle1 .container {
@@ -152,10 +152,18 @@
     margin-right: -100%;
 }
 
+.container .btn a {
+    color: black;
+}
+
 .container .btn:hover {
     background: black;
     color: white;
     transition: 0.3s;
+}
+
+.container .btn a:hover {
+    color: white;
 }
 
 /*----------Slider2 CSS part Starts here----------*/
