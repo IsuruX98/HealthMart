@@ -3,7 +3,72 @@
   <component name="ChangeListManager">
     <list default="true" id="7bf62302-7dc1-4f3b-85c4-e4e2ebb63025" name="Changes" comment="resolve changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/logout.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSS/contactus.css" beforeDir="false" afterPath="$PROJECT_DIR$/CSS/contactus.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JS/admindashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/JS/admindashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/aboutUs.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/addnewitem.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/admindashboard.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cart.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/changepw.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/changepwAdmin.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/conn.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/contactus.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/deleteItem.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/editAdminAcc.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/editacc.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/home.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/itemImg/Aboutus.png" beforeDir="false" afterPath="$PROJECT_DIR$/Images/itemImg/Aboutus.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itemImg/axe.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Images/itemImg/axe.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itemImg/contactus.png" beforeDir="false" afterPath="$PROJECT_DIR$/Images/itemImg/contactus.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itemImg/dsc_0541-1_copy_1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Images/itemImg/dsc_0541-1_copy_1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itemImg/himalaya-cystone-tablets.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Images/itemImg/himalaya-cystone-tablets.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itemImg/img1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Images/itemImg/img1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itemImg/img10.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Images/itemImg/img10.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itemImg/img15.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/Images/itemImg/img15.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itemImg/img17.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Images/itemImg/img17.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itemImg/img19.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Images/itemImg/img19.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itemImg/img2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Images/itemImg/img2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itemImg/img20.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Images/itemImg/img20.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itemImg/img21.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/Images/itemImg/img21.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itemImg/img22.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Images/itemImg/img22.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itemImg/img23.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Images/itemImg/img23.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itemImg/img24.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Images/itemImg/img24.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itemImg/img25.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Images/itemImg/img25.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itemImg/img26.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/Images/itemImg/img26.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itemImg/img3.jpeg" beforeDir="false" afterPath="$PROJECT_DIR$/Images/itemImg/img3.jpeg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itemImg/img30.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Images/itemImg/img30.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itemImg/img31.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Images/itemImg/img31.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itemImg/img32.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Images/itemImg/img32.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itemImg/img33.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Images/itemImg/img33.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itemImg/img4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Images/itemImg/img4.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itemImg/img5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Images/itemImg/img5.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itemImg/img6.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Images/itemImg/img6.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itemImg/img7.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Images/itemImg/img7.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itemImg/img8.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Images/itemImg/img8.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itemImg/img9.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Images/itemImg/img9.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itemImg/imgmed1.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Images/itemImg/imgmed1.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itemImg/imgmed2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Images/itemImg/imgmed2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itemImg/imgmed3.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Images/itemImg/imgmed3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itemImg/osupan_1000x1000.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Images/itemImg/osupan_1000x1000.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/itemlist.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/loginForm.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logout.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/medicalDevices.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/medicine.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modifyItem.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myaccAdmin.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/myaccnew.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/newsletter.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/preupload.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/privacyPolicy.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/register.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/searchedItem.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/traditionalRemedies.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/upload/Picture1.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/upload/Picture2.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewcartorders.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewcontactus.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/viewpreuporders.php" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,17 +90,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/xampp/htdocs/IWT project",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "advanced.settings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/xampp/htdocs/IWT project&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;advanced.settings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\IWT project\Images" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -48,7 +118,10 @@
       <workItem from="1653150224471" duration="609000" />
       <workItem from="1653151986966" duration="6419000" />
       <workItem from="1653164296462" duration="382000" />
-      <workItem from="1653165726244" duration="5957000" />
+      <workItem from="1653165669647" duration="1120000" />
+      <workItem from="1653178313952" duration="132000" />
+      <workItem from="1653180243294" duration="1391000" />
+      <workItem from="1653182852455" duration="2761000" />
     </task>
     <task id="LOCAL-00001" summary="resolve changes">
       <created>1653150309074</created>
