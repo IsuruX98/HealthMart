@@ -26,7 +26,7 @@ if (isset($_POST['submit'])) {
     $tempName = $_FILES['itemImgUpload']['tmp_name'];
 
     //upload directory path
-    $uploadTo = 'itemImg/';
+    $uploadTo = '../Images/itemImg/';
 
     //checking file type
     if ($fileType == 'image/jpeg' || $fileType == 'image/png') {

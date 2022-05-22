@@ -34,7 +34,8 @@
     margin-top: -30px;
 }
 
-.contactus-form input[type="text"] {
+.contactus-form input[type="text"],
+.contactus-form input[type="email"] {
     width: 100%;
     padding: 15px;
     margin: 5px 0 22px 0;

@@ -58,7 +58,6 @@ if (isset($_POST['submit'])) {
 <?php
 $itemList = '';
 $items = '';
-$errors = array();
 //check if there is a search term
 if (isset($_GET['search'])) {
     $search = mysqli_real_escape_string($conn, $_GET['search']);

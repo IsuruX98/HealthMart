@@ -30,7 +30,6 @@ if (isset($_GET['search'])) {
 }
 ?>
 <?php
-$errors = array();
 if (isset($_POST['submit'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
@@ -53,10 +52,10 @@ if (isset($_POST['submit'])) {
     $tempName = $_FILES['fileupload']['tmp_name'];
 
     //upload directory path
-    $uploadTo = 'upload/';
+    $uploadTo = '../Images/presupload/';
 
     //checking file type
-    if ($fileType == 'image/jpeg' || $fileType == 'image/png' || $fileType == 'application/pdf') {
+    if ($fileType == 'image/jpeg' || $fileType == 'image/png' || $fileType == 'application/pdf' || $fileType == null) {
         //to move the uploaded file to specific location
         $fileUplpaded = move_uploaded_file($tempName, $uploadTo . $fileName);
     } else {

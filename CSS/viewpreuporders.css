@@ -1,5 +1,6 @@
 .viewPreupOrders-main {
     padding: 40px;
+    padding-bottom: 80px;
 }
 
 .viewPreupOrders tr:nth-child(even) {
@@ -20,11 +21,14 @@
 
 .viewPreupOrders th,
 .viewPreupOrders td {
-    padding: 10px;
+    padding: 6px;
     border-bottom: 1px solid #aaa;
 }
 
+.viewPreupOrders {
+    width: 100%;
+}
+
 .viewPreupOrders-table {
-    display: flex;
-    justify-content: center;
+    width: 100%;
 }

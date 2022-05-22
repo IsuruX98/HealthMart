@@ -1,7 +1,7 @@
+<?php session_start(); ?>
 <?php
 //include database connection
 require_once 'conn.php'; ?>
-<?php session_start(); ?>
 <?php
 $itemList = '';
 $items = '';
@@ -24,46 +24,23 @@ if (isset($_GET['search'])) {
 }
 ?>
 <?php
+//check if form submitted,
+if (isset($_POST['csubmit'])) {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $mobileNo = $_POST['mobileNo'];
+    $userIdeas = $_POST['userIdeas'];
 
-$status = "";
-//add to cart process
-if (isset($_POST['code']) && $_POST['code'] != "") {
-    $code = $_POST['code'];
-    $result = mysqli_query($conn, "SELECT * FROM `item` WHERE `code`='$code'");
-    //loop through the item table and gathering details of the item
-    $row = mysqli_fetch_assoc($result);
-    $genericName = $row['genericName'];
-    $brandName = $row['brandName'];
-    $code = $row['code'];
-    $itemPrice = $row['itemPrice'];
-    $itemImage = $row['itemImage'];
-//storing them in an array
-    $cartArray = array(
-        $code => array(
-            'genericName' => $genericName,
-            'brandName' => $brandName,
-            'code' => $code,
-            'itemPrice' => $itemPrice,
-            'quantity' => 1,
-            'itemImage' => $itemImage,
-        ),
-    );
-    if (empty($_SESSION["shopping_cart"])) {
-        $_SESSION["shopping_cart"] = $cartArray;
-        $status = "Product is added to your cart!";
-    } else {
-        $array_keys = array_keys($_SESSION["shopping_cart"]);
-        if (in_array($code, $array_keys)) {
-            $status = "<p class=\"red\">Product is already added to your cart!<p>";
-        } else {
-            $_SESSION["shopping_cart"] = array_merge($_SESSION["shopping_cart"], $cartArray);
-            $status = "Product is added to your cart!";
-        }
-    }
+
+    //insert data in to the table
+    $sql = "INSERT INTO contactus(uname,email,mobileNo,userIdeas) VALUES('$name','$email','$mobileNo','$userIdeas')";
+
+    $result = mysqli_query($conn, $sql);
+
+    //redirect to home page
+    header('location: home.php');
 }
-
 ?>
-
     <!DOCTYPE html>
     <html lang="en">
 
@@ -75,10 +52,11 @@ if (isset($_POST['code']) && $_POST['code'] != "") {
         <link rel="shortcut icon" href="/Images/logo.ico" type="image/x-icon"/>
         <link rel="stylesheet" href="/CSS/template2.css"/>
         <link rel="stylesheet" href="/CSS/normalize.css"/>
-        <link rel="stylesheet" href="/CSS/store.css"/>
+        <link rel="stylesheet" href="/CSS/contactus.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"/>
         <!--stylesheet for icons in footer -->
         <script src="/JS/home.js"></script>
+        <script src="/JS/contactus.js"></script>
     </head>
 
     <body>
@@ -115,13 +93,12 @@ if (isset($_POST['code']) && $_POST['code'] != "") {
             <a href="#" onclick="aboutUs();">About us</a>
         </div>
         <div class="search-container">
-            <form action="traditionalRemedies.php" method="GET">
+            <form action="contactus.php" method="GET">
                 <input type="text" placeholder="Search.." name="search"/>
                 <button type="submit">Submit</button>
             </form>
             <div class="dropdown-content" id="drop">
                 <?php
-                //display searched items
                 if ($items) {
                     echo $itemList;
                 }
@@ -129,37 +106,50 @@ if (isset($_POST['code']) && $_POST['code'] != "") {
             </div>
         </div>
     </div>
-    <br>
-    <h2>
-        <t>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;Traditional Remedies
-    </h2>
-    <!--display messages from the add to cart process-->
-    <div class="status" id="status1">
-        <?php echo $status; ?>
-    </div>
-    <section id="product1" class="section-p1">
-        <div class="pro-container">
+    <div class="flex-container-contactus">
+        <div class="flex-container-contactus-left">
 
-            <?php
-            $result = mysqli_query($conn, "SELECT * FROM `item` WHERE `type` = 'traditional remedies'");
-            //loop through the item table and gather details of the item and printing them
-            while ($row = mysqli_fetch_assoc($result)) {
-                echo "<div class='pro'>
-                  <form method='post' action=''>
-                  <input type='hidden' name='code' value=" . $row['code'] . " />
-                  <img src='itemImg/" . $row['itemImage'] . "' />
-                  <div class='des'>
-                  <span>" . $row['genericName'] . "</span>
-                  <h5>" . $row['brandName'] . "</h5>
-                  <h4>Rs. " . $row['itemPrice'] . "</h4>
-                  <button type='submit' class='button'>Add to Cart</button>
-                  </div>
-                  </form>
-                     </div>";
-            }
-            ?>
+
+            <div class="contactus-form">
+                <h2>Contact Us</h2>
+                <form action="contactus.php" method="POST" onsubmit="contactus();">
+                    <label for="Name"><b>Name</b></label>
+                    <input type="text" name="name" required/>
+                    <label for="Email"><b>Email</b></label>
+                    <input type="email" name="email" required/>
+                    <label for="Mobilenumber"><b>Mobile number</b></label>
+                    <input type="text" name="mobileNo"/>
+                    <p>
+                        <label for="Whatisonyourmind">What is on your mind....</label>
+                    </p>
+                    <textarea id="userIdeas" name="userIdeas" rows="8" cols="50" required></textarea>
+                    <br/>
+                    <button type="submit" name="csubmit">Submit</button>
+                </form>
+            </div>
+
+
         </div>
-    </section>
+        <div class="flex-container-contactus-right">
+            <div class="flex-container-contactus-right-up-down">
+                <div class="flex-container-contactus-right-up">
+                    <div class="getintouch">
+                        <h2>Get in Touch</h2>
+                        <h3>HealthMart Pharmacy Limited</h3>
+                        <h3>Address</h3>
+                        <p>No 139/A Vihara Mawatha. Malabe, Sri Lanka.</p>
+                        <h3>Tel:</h3>
+                        <p>+94 76 447 7777</p>
+                        <h3>E mail:</h3>
+                        <p>healthmart.Ik</p>
+                    </div>
+                </div>
+                <div class="flex-container-contactus-right-down">
+                    <img src="/Images/contactus.png" alt="contactuspng"/>
+                </div>
+            </div>
+        </div>
+    </div>
     <footer>
         <div class="row primary">
             <div class="column about">
@@ -204,6 +194,7 @@ if (isset($_POST['code']) && $_POST['code'] != "") {
             <p>© 2022 HealthMart,inc. All rights reserved.</p>
         </div>
     </footer>
+
 
     </body>
 

@@ -177,7 +177,8 @@ if (isset($_POST['submit'])) {
                 foreach ($_SESSION["shopping_cart"] as $product) {
                     ?>
                     <tr>
-                        <td><img src='/itemImg/<?php echo $product["itemImage"]; ?>' width="50" height="50"/></td>
+                        <td><img src='/Images/itemImg/<?php echo $product["itemImage"]; ?>' width="50" height="50"/>
+                        </td>
                         <td><?php echo $product["genericName"]; ?></td>
                         <td><?php echo $product["brandName"]; ?></td>
                         <td>

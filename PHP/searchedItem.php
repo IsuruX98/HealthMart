@@ -26,21 +26,21 @@ if (isset($_GET['search'])) {
 <?php
 
 $status = "";
-
+$code = "";
 //add to cart process
 if (isset($_POST['code']) && $_POST['code'] != "") {
-
+    // echo $_POST['code'];
     $code = $_POST['code'];
     $result = mysqli_query($conn, "SELECT * FROM `item` WHERE `code`='$code'");
-    //loop through the item table and gathering details of the item
+    // echo $result;
     $row = mysqli_fetch_assoc($result);
+    //loop through the item table and gathering details of the item
     $genericName = $row['genericName'];
     $brandName = $row['brandName'];
     $code = $row['code'];
     $itemPrice = $row['itemPrice'];
     $itemImage = $row['itemImage'];
-
-    //storing them in an array
+//storing them in an array
     $cartArray = array(
         $code => array(
             'genericName' => $genericName,
@@ -66,7 +66,6 @@ if (isset($_POST['code']) && $_POST['code'] != "") {
 }
 
 ?>
-
     <!DOCTYPE html>
     <html lang="en">
 
@@ -78,7 +77,7 @@ if (isset($_POST['code']) && $_POST['code'] != "") {
         <link rel="shortcut icon" href="/Images/logo.ico" type="image/x-icon"/>
         <link rel="stylesheet" href="/CSS/template2.css"/>
         <link rel="stylesheet" href="/CSS/normalize.css"/>
-        <link rel="stylesheet" href="/CSS/store.css"/>
+        <link rel="stylesheet" href="/CSS/searchedItem.css"/>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css"/>
         <!--stylesheet for icons in footer -->
         <script src="/JS/home.js"></script>
@@ -118,39 +117,39 @@ if (isset($_POST['code']) && $_POST['code'] != "") {
             <a href="#" onclick="aboutUs();">About us</a>
         </div>
         <div class="search-container">
-            <form action="medicalDevices.php" method="GET">
+            <form action="searchedItem.php" method="GET">
                 <input type="text" placeholder="Search.." name="search"/>
                 <button type="submit">Submit</button>
             </form>
             <div class="dropdown-content" id="drop">
                 <?php
-                //display searched items
                 if ($items) {
+                    //display searched items
                     echo $itemList;
                 }
                 ?>
             </div>
         </div>
     </div>
-    <br>
-    <h2>
-        <t>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;Medical Devices
-    </h2>
+    <br/>
     <!--display messages from the add to cart process-->
     <div class="status" id="status1">
         <?php echo $status; ?>
+    </div>
     </div>
     <section id="product1" class="section-p1">
         <div class="pro-container">
 
             <?php
-            $result = mysqli_query($conn, "SELECT * FROM `item` WHERE `type` = 'medical devices'");
-            //loop through the item table and gather details of the item and printing them
-            while ($row = mysqli_fetch_assoc($result)) {
-                echo "<div class='pro'>
+            if (isset($_GET['item_ID'])) {
+                $id = $_GET['item_ID'];
+                $result = mysqli_query($conn, "SELECT * FROM `item` WHERE `itemID` = $id");
+                //loop through the item table and gather details of the item and printing them
+                while ($row = mysqli_fetch_assoc($result)) {
+                    echo "<div class='pro'>
                   <form method='post' action=''>
                   <input type='hidden' name='code' value=" . $row['code'] . " />
-                  <img src='itemImg/" . $row['itemImage'] . "' />
+                  <img src='/Images/itemImg/" . $row['itemImage'] . "' />
                   <div class='des'>
                   <span>" . $row['genericName'] . "</span>
                   <h5>" . $row['brandName'] . "</h5>
@@ -159,6 +158,12 @@ if (isset($_POST['code']) && $_POST['code'] != "") {
                   </div>
                   </form>
                      </div>";
+                }
+            } else {
+                echo "<div class='emptySearch'>
+          <h1>Nothing to show here</h1>
+          <img class=\"emptyctimg\" src=\"/Images/emptycart.png\">
+          </div>";
             }
             ?>
         </div>

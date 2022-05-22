@@ -28,7 +28,6 @@ if (isset($_GET['search'])) {
 $status = "";
 //add to cart process
 if (isset($_POST['code']) && $_POST['code'] != "") {
-
     $code = $_POST['code'];
     $result = mysqli_query($conn, "SELECT * FROM `item` WHERE `code`='$code'");
     //loop through the item table and gathering details of the item
@@ -116,7 +115,7 @@ if (isset($_POST['code']) && $_POST['code'] != "") {
             <a href="#" onclick="aboutUs();">About us</a>
         </div>
         <div class="search-container">
-            <form action="medicine.php" method="GET">
+            <form action="traditionalRemedies.php" method="GET">
                 <input type="text" placeholder="Search.." name="search"/>
                 <button type="submit">Submit</button>
             </form>
@@ -132,7 +131,7 @@ if (isset($_POST['code']) && $_POST['code'] != "") {
     </div>
     <br>
     <h2>
-        <t>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;Medicines
+        <t>&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;Traditional Remedies
     </h2>
     <!--display messages from the add to cart process-->
     <div class="status" id="status1">
@@ -142,13 +141,13 @@ if (isset($_POST['code']) && $_POST['code'] != "") {
         <div class="pro-container">
 
             <?php
-            $result = mysqli_query($conn, "SELECT * FROM `item` WHERE `type` = 'medicine'");
+            $result = mysqli_query($conn, "SELECT * FROM `item` WHERE `type` = 'traditional remedies'");
             //loop through the item table and gather details of the item and printing them
             while ($row = mysqli_fetch_assoc($result)) {
                 echo "<div class='pro'>
                   <form method='post' action=''>
                   <input type='hidden' name='code' value=" . $row['code'] . " />
-                  <img src='itemImg/" . $row['itemImage'] . "' />
+                  <img src='/Images/itemImg/" . $row['itemImage'] . "' />
                   <div class='des'>
                   <span>" . $row['genericName'] . "</span>
                   <h5>" . $row['brandName'] . "</h5>
@@ -205,7 +204,6 @@ if (isset($_POST['code']) && $_POST['code'] != "") {
             <p>© 2022 HealthMart,inc. All rights reserved.</p>
         </div>
     </footer>
-
 
     </body>
 
