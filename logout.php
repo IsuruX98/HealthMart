@@ -16,3 +16,5 @@ session_destroy();
 
 //redirecting to home page
 header('location: loginForm.php');
+
+?>

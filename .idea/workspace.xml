@@ -3,20 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="7bf62302-7dc1-4f3b-85c4-e4e2ebb63025" name="Changes" comment="resolve changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CSS/viewpreuporders.css" beforeDir="false" afterPath="$PROJECT_DIR$/CSS/viewpreuporders.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/itemImg/2018-11-24 4.39.28 AM.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/itemImg/91B9805F-1A4C-460D-9AA0-FF0B5F840709.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/itemImg/WhatsApp Image 2021-12-07 at 3.44.12 PM.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/itemImg/me.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/itemImg/photo_2022-02-15_11-52-53.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/itemImg/photo_2022-02-15_11-52-57.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/itemImg/shopnow.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/preupload.php" beforeDir="false" afterPath="$PROJECT_DIR$/preupload.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/91B9805F-1A4C-460D-9AA0-FF0B5F840709.JPG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/img1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/img12.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/img2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/upload/photo_2022-02-15_11-52-53.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/logout.php" beforeDir="false" afterPath="$PROJECT_DIR$/logout.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +30,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/xampp/php/php.exe",
+    "last_opened_file_path": "C:/xampp/htdocs/IWT project",
     "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "advanced.settings",
     "vue.rearranger.settings.migration": "true"
@@ -59,7 +46,9 @@
       <updated>1653145101956</updated>
       <workItem from="1653145103534" duration="112000" />
       <workItem from="1653150224471" duration="609000" />
-      <workItem from="1653151986966" duration="6159000" />
+      <workItem from="1653151986966" duration="6419000" />
+      <workItem from="1653164296462" duration="382000" />
+      <workItem from="1653165726244" duration="5957000" />
     </task>
     <task id="LOCAL-00001" summary="resolve changes">
       <created>1653150309074</created>
@@ -89,7 +78,14 @@
       <option name="project" value="LOCAL" />
       <updated>1653158052133</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="resolve changes">
+      <created>1653162411349</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1653162411349</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
