@@ -9,6 +9,7 @@ if (!isset($_SESSION['user_id'])) {
 }
 ?>
 
+
 <?php
 //checking if user submits the data
 if (isset($_POST['submit'])) {
