@@ -2,6 +2,8 @@
 This is a online pharmacy portal.
 import the database SQL file into your MySQL and put the HealthMart folder into C:\xampp\htdocs, then open the folder in VS code
 
+https://github.com/IsuruX98/HealthMart/assets/104721314/dcc24127-0299-4a72-842b-0aaafa3def57
+
 user names and passwords for user accounts
 
 isuru@gmail.com - healthmart01
